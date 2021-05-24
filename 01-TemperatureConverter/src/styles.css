@@ -1,0 +1,19 @@
+body{
+    background-color:#fff;
+}
+.converter{
+    width: 340px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    padding: 40px;
+}
+input{
+    margin: 10px 10px;
+    padding: 10px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+}
