@@ -1,6 +1,6 @@
 function converttoCelsius(){
   var fahrenheit = document.getElementById('fahrenheit').value;
-  if(fahrenheit==='')
+  if(fahrenheit===''||fahrenheit==='-')
   {
     document.getElementById('celsius').value = '';
     return;
@@ -8,6 +8,7 @@ function converttoCelsius(){
   if(isNaN(fahrenheit))
   {
     alert('Enter valid value');
+    document.getElementById('fahrenheit').value = '';
     return;
   }
   var celsius = (fahrenheit - 32)*5/9;
@@ -16,7 +17,7 @@ function converttoCelsius(){
 }
 function converttoFahrenheit(){
   var celsius = document.getElementById('celsius').value;
-  if(celsius==='')
+  if(celsius===''||celsius==='-')
   {
     document.getElementById('fahrenheit').value = '';
     return;
@@ -24,6 +25,7 @@ function converttoFahrenheit(){
   if(isNaN(celsius))
   {
     alert('Enter valid value');
+    document.getElementById('celsius').value = '';
     return;
   }
   var fahrenheit = 32 + 9/5*celsius;
