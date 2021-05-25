@@ -10,7 +10,7 @@ function warning(){
 }
 function converttoCelsius(){
   var fahrenheit = document.getElementById('fahrenheit').value;
-  if(fahrenheit===''||fahrenheit==='-'||fahrenheit==='.')
+  if(fahrenheit===''||fahrenheit==='-'||fahrenheit==='.'||fahrenheit==='+')
   {
     document.getElementById('celsius').value = '';
     return;
@@ -27,7 +27,7 @@ function converttoCelsius(){
 }
 function converttoFahrenheit(){
   var celsius = document.getElementById('celsius').value;
-  if(celsius===''||celsius==='-'||celsius==='.')
+  if(celsius===''||celsius==='-'||celsius==='.'||celsius==='+')
   {
     document.getElementById('fahrenheit').value = '';
     return;

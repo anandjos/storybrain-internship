@@ -1,5 +1,5 @@
 body{
-    background-color:#fff;
+    background-color: #DFDFDF;
 }
 .head {
     font-size: 65px;
@@ -17,7 +17,7 @@ input {
     padding: 10px;
     width: 80%;
     height: 70px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 10px;
     font-size: 35px;
     border-radius: 5px;
@@ -25,7 +25,11 @@ input {
 }
 @media (max-width: 900px){
     .head{
-        font-size: 45px;
+        font-size: 35px;
+    }
+    input{
+        height: 40px;
+        font-size: 25px;
     }
 }
 @media (min-width: 900px){
