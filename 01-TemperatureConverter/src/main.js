@@ -2,6 +2,12 @@ function clear(){
   document.getElementById('fahrenheit').value = '';
   document.getElementById('celsius').value = '';
 }
+function warning(){
+  document.getElementById('warning').innerHTML ='Enter valid value!';
+    setTimeout(function(){
+      document.getElementById("warning").innerHTML = '';
+      },900);
+}
 function converttoCelsius(){
   var fahrenheit = document.getElementById('fahrenheit').value;
   if(fahrenheit===''||fahrenheit==='-')
@@ -11,7 +17,7 @@ function converttoCelsius(){
   }
   if(isNaN(fahrenheit))
   {
-    alert('Enter valid value');
+    warning();
     clear();
     return;
   }
@@ -28,7 +34,7 @@ function converttoFahrenheit(){
   }
   if(isNaN(celsius))
   {
-    alert('Enter valid value');
+    warning();
     clear();
     return;
   }
