@@ -1,25 +1,35 @@
 body{
     background-color:#fff;
 }
-.head{
-    font-size: 35px;
+.head {
+    font-size: 65px;
     font-weight: bold;
     font-style: oblique;
 }
 .converter{
-    width: 340px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     text-align: center;
-    padding: 40px;
 }
-input{
-    margin: 20px;
+input {
     padding: 10px;
-    height: 40px;
-    font-size: 20px;
+    width: 80%;
+    height: 70px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 35px;
     border-radius: 5px;
     border: solid 2px;
+}
+@media (max-width: 900px){
+    .head{
+        font-size: 45px;
+    }
+}
+@media (min-width: 900px){
+    input{
+        width: 720px;
+    }
 }
