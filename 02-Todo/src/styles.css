@@ -1,0 +1,34 @@
+.head{
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Verdana;
+}
+.todo{
+    text-align: center;
+}
+input{
+    width: 400px;
+    height: 50px;
+}
+.tools{
+    margin-top: 60px;
+    display: flex;
+}
+a:hover{
+    cursor: pointer;
+    color: blue;
+
+}
+.tool{
+    flex: 1;
+    font-size: 25px;
+    font-weight: bold;
+}
+.form{
+    margin-top: 200px;
+    display: none;
+}
+.list{
+    margin-top: 200px;
+    font-size: 25px;
+}

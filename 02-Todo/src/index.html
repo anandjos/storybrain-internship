@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta name="viewport" content= "width=device-width, user-scalable=no">-->
+    <title>Todo</title>
+    <!--<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">-->
+</head>
+<script type = "text/javascript" src = "./main.js" ></script>
+<link rel="stylesheet" href="styles.css">
+<body>
+    <div class="todo">
+        <p class="head">TODO</p>
+        <div class="tools">
+            <a class="tool" onclick="view()">VIEW</a>
+            <a class="tool" onclick="displayAdd()">ADD</a>
+            <a class="tool" onclick="displayEdit()">EDIT</a>
+            <a class="tool" onclick="displayRemove()">REMOVE</a>
+        </div>
+        <div class="form" id="form">
+            <h1 id="action"></h1>
+            <input type="text" id="task" name="task" placeholder="Taskname"></br>
+            <input type="text" id="newtask" name="newtask" placeholder="New taskname"></br>
+            <p id="warning"></p>
+            <button onclick="action()">Submit</button>
+        </div>
+        <div id="list" class="list"></div>
+    </div>
+</body>
+</html>
