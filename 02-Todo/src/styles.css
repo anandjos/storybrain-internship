@@ -35,12 +35,29 @@ button{
     margin-top: 150px;
     display: none;
 }
+#action{
+    font-size: 20px;
+}
 .list{
-    margin-top: 200px;
+    margin-top: 150px;
     font-size: 25px;
 }
-@media (min-width: 900px){
+@media (min-width: 800px){
     input{
-        width: 720px;
+        width: 640px;
+    }
+    .list{
+        font-size: 35px;
+    }
+    #action{
+        font-size: 30px;
+    }
+}
+@media (max-width: 900px){
+    .form{
+        margin-top: 70px;
+    }
+    .list{
+        margin-top: 100px;
     }
 }
