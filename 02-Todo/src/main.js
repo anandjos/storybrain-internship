@@ -3,6 +3,12 @@ function clear(){
     document.getElementById('task').value ='';
     document.getElementById('newtask').value ='';
 }
+function warning(errormsg){
+    document.getElementById('warning').innerHTML = errormsg;
+      setTimeout(function(){
+        document.getElementById("warning").innerHTML = '';
+        },900);
+}
 function displayAdd() {
     var x = document.getElementById("form");
     x.style.display = "block";
@@ -13,7 +19,7 @@ function displayAdd() {
 function displayEdit() {
     var x = document.getElementById("form");
     x.style.display = "block";
-    document.getElementById('newtask').style.display = "block";
+    document.getElementById('newtask').style.display = "inline";
     document.getElementById('list').style.display = "none";
     document.getElementById('action').innerHTML = 'EDIT';
 }
@@ -28,11 +34,16 @@ function add(){
     var task = document.getElementById('task').value;
     if(task==='')
     {
-        alert('task cant be empty');
+        warning('task cant be empty');
+        return;
+    }
+    clear();
+    let pos = todo.indexOf(task);
+    if(pos!==-1){
+        warning("task already exists");
         return;
     }
     todo.push(task);
-    clear();
 }
 function edit(){
     var task = document.getElementById('task').value;
@@ -42,7 +53,7 @@ function edit(){
     if(pos===-1 ||pos2!==-1)
     {
         clear();
-        alert("error");
+        warning("error");
         return;
     }
     todo[pos] = newtask;
@@ -54,7 +65,7 @@ function remove(){
     let pos = todo.indexOf(task);
     if(pos===-1){
         clear();
-        alert("no such task");
+        warning("no such task");
         return;
     }
     todo.splice(pos,1);
