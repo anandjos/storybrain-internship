@@ -1,4 +1,5 @@
 let todoList = [];
+let count = 0;
 function exists(taskname){
     let exist = false;
     todoList.forEach(todo=>{
@@ -32,28 +33,43 @@ function add(){
         return;
     }*/
     const todo = {
-        id: `task${todoList.length}`,
+        id: `task${count}`,
         task: taskname,
         isDone: false
     }
+    count++;
     todoList.unshift(todo);
     addTaskElement(taskname,todo.id);
 }
 function remove(temp){
     let id = temp.parentNode.getAttribute('id');
     document.getElementById(id).innerHTML='';
+    todoList.forEach((todo,i)=>{
+        if(todo.id==id){
+            todoList.splice(i,1);
+            return;
+        }
+    });  
 }
 function edit(temp){
     let parent = temp.parentNode;
     let child1 = parent.children[0];
     let child2 = parent.children[1];
     if(child1.readOnly){
+        child1.style.borderColor = "black";
         child1.readOnly = false;
-        child2.innerHTML = `<a onclick="edit(this)"><i class="icon-li icon-ok icon-2x"></i></a>`;
+        child2.children[0].className = "icon-li icon-ok icon-2x";
     }
     else{
-        /*'<a><i class="icon-li icon-ok">'*/
+        child1.style.borderColor = "white";
+        todoList.forEach(todo=>{
+            if(todo.id == parent.id)
+            {
+                todo.task = child1.value;
+                return;
+            }
+        });
         child1.readOnly = true;
-        child2.innerHTML = `<a onclick="edit(this)"><i class="icon-fixed-width icon-pencil icon-2x"></i></a>`;
+        child2.children[0].className = "icon-fixed-width icon-pencil icon-2x";
     }
 }
