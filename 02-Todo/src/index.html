@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content= "width=device-width, user-scalable=no">
-    <title>Todo</title>
-    <!--<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
@@ -21,26 +20,22 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <title>TODO</title>
 </head>
+<link rel="stylesheet" href="./styles.css">
 <script type = "text/javascript" src = "./main.js" ></script>
-<link rel="stylesheet" href="styles.css">
 <body>
-    <div class="todo">
-        <p class="head">TODO</p>
-        <div class="tools">
-            <a class="tool" onclick="view()">VIEW</a>
-            <a class="tool" onclick="displayAdd()">ADD</a>
-            <a class="tool" onclick="displayEdit()">EDIT</a>
-            <a class="tool" onclick="displayRemove()">REMOVE</a>
+    <div class="head">
+        <p class="title">TODO</p>
+        <div class="addmenu">
+            <input type="text" class="task" id="task" placeholder="Task name">
+            <button onclick="add()" class="addbtn">ADD</button>
         </div>
-        <div class="form" id="form">
-            <h1 id="action"></h1>
-            <input type="text" id="task" name="task" placeholder="Taskname"></br>
-            <input type="text" id="newtask" name="newtask" placeholder="New taskname"></br>
-            <p id="warning"></p>
-            <button onclick="action()">Submit</button>
-        </div>
-        <div id="list" class="list"></div>
+        <p class="warning" id="warning"></p>
+    </div>
+    <div class="container" id="container">
+        <ul id="list">
+        </ul>
     </div>
 </body>
 </html>

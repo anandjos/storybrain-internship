@@ -1,89 +1,32 @@
-let todo = [];
-function clear(){
-    document.getElementById('task').value ='';
-    document.getElementById('newtask').value ='';
-}
-function warning(errormsg){
-    document.getElementById('warning').innerHTML = errormsg;
-      setTimeout(function(){
-        document.getElementById("warning").innerHTML = '';
-        },900);
-}
-function displayAdd() {
-    var x = document.getElementById("form");
-    x.style.display = "block";
-    document.getElementById('newtask').style.display = "none";
-    document.getElementById('list').style.display = "none";
-    document.getElementById('action').innerHTML = 'ADD';
-}
-function displayEdit() {
-    var x = document.getElementById("form");
-    x.style.display = "block";
-    document.getElementById('newtask').style.display = "inline";
-    document.getElementById('list').style.display = "none";
-    document.getElementById('action').innerHTML = 'EDIT';
-}
-function displayRemove() {
-    var x = document.getElementById("form");
-    x.style.display = "block";
-    document.getElementById('newtask').style.display = "none";
-    document.getElementById('list').style.display = "none";
-    document.getElementById('action').innerHTML = 'REMOVE';
+let todoList = [];
+function taskElement(task,id){
+    let taskHTML = `<div id=${id}><input type="text" value=${task} readonly><a onclick="edit(this)"><i class="icon-fixed-width icon-pencil icon-2x"></i></a> <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
+    document.getElementById('list').insertAdjacentHTML('beforeend' ,taskHTML);
 }
 function add(){
     var task = document.getElementById('task').value;
+    document.getElementById('task').value = '';
     if(task==='')
     {
-        warning('task cant be empty');
+        document.getElementById('warning').innerHTML = "Enter task name!";
+        setTimeout(function(){
+            document.getElementById("warning").innerHTML = '';
+            },900);
         return;
     }
-    clear();
-    let pos = todo.indexOf(task);
-    if(pos!==-1){
-        warning("task already exists");
-        return;
+    const todo = {
+        id: `task${todoList.length}`,
+        task: task,
+        isDone: false
     }
-    todo.push(task);
+    todoList.unshift(todo);
+    taskElement(task,todo.id);
 }
-function edit(){
-    var task = document.getElementById('task').value;
-    let pos = todo.indexOf(task);
-    var newtask = document.getElementById('newtask').value;
-    let pos2 = todo.indexOf(newtask);
-    if(pos===-1 ||pos2!==-1)
-    {
-        clear();
-        warning("error");
-        return;
-    }
-    todo[pos] = newtask;
-    clear();
+function remove(temp){
+    let id = temp.parentNode.getAttribute('id');
+    document.getElementById(id).innerHTML='';
 }
-function remove(){
-    document.getElementById('newtask').style.display = "none";
-    var task = document.getElementById('task').value;
-    let pos = todo.indexOf(task);
-    if(pos===-1){
-        clear();
-        warning("no such task");
-        return;
-    }
-    todo.splice(pos,1);
-    clear();
-}
-function view(){
-    document.getElementById('form').style.display = "none";
-    document.getElementById('list').style.display = "block";
-    document.getElementById('list').innerHTML = '';
-    todo.forEach(ele=>{
-        document.getElementById('list').innerHTML += ele + '</br>'; 
-    })
-}
-function action(){
-    if(document.getElementById('action').innerHTML == 'ADD')
-    add();
-    else if(document.getElementById('action').innerHTML == 'EDIT')
-    edit();
-    else if(document.getElementById('action').innerHTML == 'REMOVE')
-    remove();
+function edit(temp){
+    let parent = temp.parentNode;
+    parent.children[0].readOnly = false;
 }

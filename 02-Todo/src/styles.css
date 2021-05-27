@@ -1,63 +1,27 @@
-.head{
-    font-size: 35px;
-    font-weight: bold;
-    font-family: Verdana;
+*{
+    margin: 0;
 }
-.todo{
+.head{
+    background-color: blanchedalmond;
+    height: 25vh;
     text-align: center;
+}
+.title{
+    font-size: 10vh;
 }
 input{
-    width: 80%;
-    height: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
+    height: 5vh;
+    width: 30vh;
 }
-.tools{
-    margin-top: 60px;
-    display: flex;
+.addbtn{
+    height: 5vh;
+    width: 8vh;
 }
-a:hover{
-    cursor: pointer;
-    color: blue;
-
-}
-button{
-    font-size: 20px;
-}
-.tool{
-    flex: 1;
-    font-size: 25px;
-    font-weight: bold;
-}
-.form{
+#list{
     text-align: center;
-    margin-top: 150px;
-    display: none;
 }
-#action{
-    font-size: 20px;
-}
-.list{
-    margin-top: 150px;
-    font-size: 25px;
-}
-@media (min-width: 800px){
+@media (min-width: 900px){
     input{
-        width: 640px;
-    }
-    .list{
-        font-size: 35px;
-    }
-    #action{
-        font-size: 30px;
-    }
-}
-@media (max-width: 900px){
-    .form{
-        margin-top: 70px;
-    }
-    .list{
-        margin-top: 100px;
+        width: 45vh;
     }
 }
