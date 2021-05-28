@@ -1,5 +1,18 @@
-let todoList = [];
-let count = 0;
+let count = window.localStorage.getItem('count');
+let todoList = JSON.parse(window.localStorage.getItem('todo'));
+if(todoList==null){
+    todoList = [];
+    window.localStorage.setItem('count', 0);
+}
+function loadStorage(){
+    //window.localStorage.clear();
+    if(localStorage.getItem('count')==null)
+    {
+        count = 0;
+        window.localStorage.setItem('count', 0);
+    }
+    todoList.forEach(todo=>addTaskElement(todo.task,todo.id));
+}
 function exists(taskname){
     let exist = false;
     todoList.forEach(todo=>{
@@ -38,8 +51,11 @@ function add(){
         isDone: false
     }
     count++;
-    todoList.unshift(todo);
+    window.localStorage.setItem('count', count);
+    todoList.push(todo);
+    window.localStorage.setItem('todo', JSON.stringify(todoList));
     addTaskElement(taskname,todo.id);
+    console.log(todoList);
 }
 function remove(temp){
     let id = temp.parentNode.getAttribute('id');
@@ -50,6 +66,7 @@ function remove(temp){
             return;
         }
     });  
+    window.localStorage.setItem('todo', JSON.stringify(todoList));
 }
 function edit(temp){
     let parent = temp.parentNode;
@@ -69,6 +86,7 @@ function edit(temp){
                 return;
             }
         });
+        window.localStorage.setItem('todo', JSON.stringify(todoList));
         child1.readOnly = true;
         child2.children[0].className = "icon-fixed-width icon-pencil icon-2x";
     }
