@@ -21,8 +21,16 @@ input{
     width: 8vh;
     border-radius: 2vh;
 }
-#list,#list2{
+#list1{
     text-align: center;
+    margin-bottom: 5vh;
+}
+#list2{
+    margin-top: 5vh;
+    text-align: center;
+}
+#list2 input{
+    background-color: #2c2827;
 }
 .ele{
     border-color: white;
@@ -46,4 +54,8 @@ input{
         background-color: #433d3c;
         color: white;
     }
+}
+#done{
+    width: 2vh;
+    box-shadow: none;
 }

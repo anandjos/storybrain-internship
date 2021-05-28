@@ -11,7 +11,11 @@ function loadStorage(){
         count = 0;
         window.localStorage.setItem('count', 0);
     }
-    todoList.forEach(todo=>addTaskElement(todo.task,todo.id));
+    todoList.forEach(todo=>{
+        if(todo.isDone==false)
+            addTaskElement(todo.task,todo.id);
+        else addTaskElement2(todo.task,todo.id);
+    });
 }
 function exists(taskname){
     let exist = false;
@@ -30,10 +34,15 @@ function warning(msg){
             },900);
 }
 function addTaskElement(task,id){
-    let taskHTML = `<div id=${id}><input type="text" class="ele" value="${task}" readonly>
+    let taskHTML = `<div id=${id}><input type="checkbox" id="done" onclick="done(this)"><input type="text" class="ele" value="${task}" readonly>
     <a onclick="edit(this)"><i class="icon-fixed-width icon-pencil icon-2x"></i></a> 
     <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
-    document.getElementById('list').insertAdjacentHTML('beforeend' ,taskHTML);
+    document.getElementById('list1').insertAdjacentHTML('beforeend' ,taskHTML);
+}
+function addTaskElement2(task,id){
+    let taskHTML = `<div id=${id}><input type="checkbox" id="done" onclick="done(this)"><input type="text" class="ele" value="${task}" readonly> 
+    <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
+    document.getElementById('list2').insertAdjacentHTML('beforeend' ,taskHTML);
 }
 function add(){
     var taskname = document.getElementById('task').value;
@@ -74,8 +83,8 @@ function remove(temp){
 }
 function edit(temp){
     let parent = temp.parentNode;
-    let child1 = parent.children[0];
-    let child2 = parent.children[1];
+    let child1 = parent.children[1];
+    let child2 = parent.children[2];
     if(child1.readOnly){
         child1.style.borderColor = "black";
         child1.readOnly = false;
@@ -94,4 +103,16 @@ function edit(temp){
         child1.readOnly = true;
         child2.children[0].className = "icon-fixed-width icon-pencil icon-2x";
     }
+}
+function done(temp){
+    let parent = temp.parentNode;
+    let id = parent.getAttribute('id');
+    todoList.forEach(todo=>{
+        if(todo.id==id){
+            todo.isDone = !todo.isDone;
+            return;
+        }
+    });
+    window.localStorage.setItem('todo', JSON.stringify(todoList));
+    location.reload();
 }
