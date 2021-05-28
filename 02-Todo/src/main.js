@@ -40,7 +40,7 @@ function addTaskElement(task,id){
     document.getElementById('list1').insertAdjacentHTML('beforeend' ,taskHTML);
 }
 function addTaskElement2(task,id){
-    let taskHTML = `<div id=${id}><input type="checkbox" id="done" onclick="done(this)"><input type="text" class="ele" value="${task}" readonly> 
+    let taskHTML = `<div id=${id}><input type="text" class="ele" value="${task}" readonly> 
     <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
     document.getElementById('list2').insertAdjacentHTML('beforeend' ,taskHTML);
 }

@@ -11,10 +11,10 @@
 }
 input{
     height: 5vh;
-    width: 30vh;
+    width: 20vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 2vh;
-    padding-left: 1vh;
+    text-align: center;
 }
 .addbtn{
     height: 5vh;
@@ -30,14 +30,15 @@ input{
     text-align: center;
 }
 #list2 input{
-    background-color: #2c2827;
+    background-color: rgb(182, 168, 146);
 }
 .ele{
     border-color: white;
 }
-@media (min-width: 900px){
+@media (min-width: 600px){
     input{
         width: 45vh;
+        font-size: 3vh;
     }
 }
 @media (prefers-color-scheme: dark){
@@ -54,8 +55,12 @@ input{
         background-color: #433d3c;
         color: white;
     }
+    #list2 input{
+        background-color: #2c2827;
+    }
 }
 #done{
     width: 2vh;
     box-shadow: none;
+    margin-right: 1vh;
 }
