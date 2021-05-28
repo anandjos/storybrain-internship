@@ -27,14 +27,16 @@
 <body onload="loadStorage()">
     <div class="head">
         <p class="title">TODO</p>
-        <div class="addmenu">
+        <form class="addmenu" onsubmit="add()" >
             <input type="text" class="task" id="task" placeholder="Task name">
-            <button onclick="add()" class="addbtn">ADD</button>
-        </div>
+            <button type="submit" id="addbtn" class="addbtn">ADD</button>
+        </form>
         <p class="warning" id="warning"></p>
     </div>
     <div class="container" id="container">
         <ul id="list">
+        </ul>
+        <ul id="list2">
         </ul>
     </div>
 </body>

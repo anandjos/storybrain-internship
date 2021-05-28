@@ -30,7 +30,9 @@ function warning(msg){
             },900);
 }
 function addTaskElement(task,id){
-    let taskHTML = `<div id=${id}><input type="text" class="ele" value="${task}" readonly><a onclick="edit(this)"><i class="icon-fixed-width icon-pencil icon-2x"></i></a> <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
+    let taskHTML = `<div id=${id}><input type="text" class="ele" value="${task}" readonly>
+    <a onclick="edit(this)"><i class="icon-fixed-width icon-pencil icon-2x"></i></a> 
+    <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
     document.getElementById('list').insertAdjacentHTML('beforeend' ,taskHTML);
 }
 function add(){
@@ -58,15 +60,17 @@ function add(){
     console.log(todoList);
 }
 function remove(temp){
-    let id = temp.parentNode.getAttribute('id');
-    document.getElementById(id).innerHTML='';
-    todoList.forEach((todo,i)=>{
-        if(todo.id==id){
-            todoList.splice(i,1);
-            return;
-        }
-    });  
-    window.localStorage.setItem('todo', JSON.stringify(todoList));
+    if(window.confirm("Are you sure?")){
+        let id = temp.parentNode.getAttribute('id');
+        document.getElementById(id).innerHTML='';
+        todoList.forEach((todo,i)=>{
+            if(todo.id==id){
+                todoList.splice(i,1);
+                return;
+            }
+        });  
+        window.localStorage.setItem('todo', JSON.stringify(todoList));
+    }
 }
 function edit(temp){
     let parent = temp.parentNode;

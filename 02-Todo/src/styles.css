@@ -12,12 +12,16 @@
 input{
     height: 5vh;
     width: 30vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 2vh;
+    padding-left: 1vh;
 }
 .addbtn{
     height: 5vh;
     width: 8vh;
+    border-radius: 2vh;
 }
-#list{
+#list,#list2{
     text-align: center;
 }
 .ele{
@@ -33,13 +37,13 @@ input{
         color: white;
     }
     .head{
-        background-color: rgb(119, 118, 118);
+        background-color: #393e46;
     }
     body{
-        background-color: #555;
+        background-color: #433d3c;
     }
     input{
-        background-color: #555;
+        background-color: #433d3c;
         color: white;
     }
 }
