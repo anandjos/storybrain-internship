@@ -13,13 +13,14 @@ input{
     height: 5vh;
     width: 20vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 2vh;
+    border: 2px;
     text-align: center;
 }
 .addbtn{
-    height: 5vh;
+    height: 4vh;
     width: 8vh;
-    border-radius: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-left: 1vh;
 }
 #list1{
     text-align: center;
@@ -35,7 +36,7 @@ input{
 .ele{
     border-color: white;
 }
-@media (min-width: 600px){
+@media (min-width: 750px){
     input{
         width: 45vh;
         font-size: 3vh;
@@ -60,7 +61,8 @@ input{
     }
 }
 #done{
-    width: 2vh;
+    width: 3vh;
+    height: 2vh;
     box-shadow: none;
     margin-right: 1vh;
 }

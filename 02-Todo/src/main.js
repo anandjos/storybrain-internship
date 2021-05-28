@@ -5,7 +5,7 @@ if(todoList==null){
     window.localStorage.setItem('count', 0);
 }
 function loadStorage(){
-    //window.localStorage.clear();
+    window.localStorage.clear();
     if(localStorage.getItem('count')==null)
     {
         count = 0;
@@ -52,6 +52,8 @@ function add(){
         warning("Enter taskname!");
         return;
     }
+    const date = new Date();
+    var time = date.getHours() + ':' + date.getMinutes();
     /*if(exists(taskname)){
         warning("Task already exists!");
         return;
@@ -59,7 +61,8 @@ function add(){
     const todo = {
         id: `task${count}`,
         task: taskname,
-        isDone: false
+        isDone: false,
+        time: time
     }
     count++;
     window.localStorage.setItem('count', count);
@@ -87,14 +90,19 @@ function edit(temp){
     let child2 = parent.children[2];
     if(child1.readOnly){
         child1.style.borderColor = "black";
+        child1.style.borderStyle = "solid";
         child1.readOnly = false;
         child2.children[0].className = "icon-li icon-ok icon-2x";
     }
     else{
         child1.style.borderColor = "white";
+        child1.style.borderStyle = "none"
         todoList.forEach(todo=>{
             if(todo.id == parent.id)
             {
+                let date = new Date();
+                let time = date.getHours() + ':' + date.getMinutes();
+                todo.time = time;
                 todo.task = child1.value;
                 return;
             }
