@@ -20,11 +20,26 @@ input{
 #list{
     text-align: center;
 }
+.ele{
+    border-color: white;
+}
 @media (min-width: 900px){
     input{
         width: 45vh;
     }
 }
-.ele{
-    border-color: white;
+@media (prefers-color-scheme: dark){
+    .title{
+        color: white;
+    }
+    .head{
+        background-color: rgb(119, 118, 118);
+    }
+    body{
+        background-color: #555;
+    }
+    input{
+        background-color: #555;
+        color: white;
+    }
 }
