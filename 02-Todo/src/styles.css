@@ -21,10 +21,11 @@ input{
     width: 5vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-left: 1vh;
+    font-size: 10px;
 }
 p{
     display: inline-block;
-    font-size: 10px;
+    font-size: 6px;
     margin-right: 10px;
 }
 .warning{
@@ -57,8 +58,12 @@ p{
     .addbtn{
         width: 8vh;
     }
+    p{
+        font-size: 10px;
+        margin-right: 3px;
+    }
     #list1{
-        margin-right: 3vh;
+        margin-right: 2vh;
     }
     #list2{
         margin-right: 8vh;

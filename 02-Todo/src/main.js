@@ -41,7 +41,8 @@ function addTaskElement(task,id,time){
     document.getElementById('list1').insertAdjacentHTML('afterbegin' ,taskHTML);
 }
 function addTaskElement2(task,id){
-    let taskHTML = `<div id=${id}><input type="text" class="ele" value="${task}" readonly> 
+    let taskHTML = `<div id=${id}><input type="checkbox" id="done" onclick="done(this)">
+    <input type="text" class="ele" value="${task}" readonly> 
     <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
     document.getElementById('list2').insertAdjacentHTML('beforeend' ,taskHTML);
 }
@@ -121,7 +122,10 @@ function done(temp){
     let id = parent.getAttribute('id');
     todoList.forEach(todo=>{
         if(todo.id==id){
+            const date = new Date();
+            var time = date.getHours() + ':' + date.getMinutes();
             todo.isDone = !todo.isDone;
+            todo.time = time;
             return;
         }
     });
