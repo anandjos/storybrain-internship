@@ -13,7 +13,7 @@ function loadStorage(){
     }
     todoList.forEach(todo=>{
         if(todo.isDone==false)
-            addTaskElement(todo.task,todo.id);
+            addTaskElement(todo.task,todo.id,todo.time);
         else addTaskElement2(todo.task,todo.id);
     });
 }
@@ -33,11 +33,12 @@ function warning(msg){
             document.getElementById("warning").innerHTML = '';
             },900);
 }
-function addTaskElement(task,id){
+function addTaskElement(task,id,time){
     let taskHTML = `<div id=${id}><input type="checkbox" id="done" onclick="done(this)"><input type="text" class="ele" value="${task}" readonly>
+    <p class="time">${time}</p>
     <a onclick="edit(this)"><i class="icon-fixed-width icon-pencil icon-2x"></i></a> 
     <a onclick="remove(this)"><i class="icon-fixed-width icon-trash icon-2x"></i></a></br></div>`;
-    document.getElementById('list1').insertAdjacentHTML('beforeend' ,taskHTML);
+    document.getElementById('list1').insertAdjacentHTML('afterbegin' ,taskHTML);
 }
 function addTaskElement2(task,id){
     let taskHTML = `<div id=${id}><input type="text" class="ele" value="${task}" readonly> 
@@ -68,7 +69,7 @@ function add(){
     window.localStorage.setItem('count', count);
     todoList.push(todo);
     window.localStorage.setItem('todo', JSON.stringify(todoList));
-    addTaskElement(taskname,todo.id);
+    addTaskElement(taskname,todo.id,todo.time);
     console.log(todoList);
 }
 function remove(temp){

@@ -18,12 +18,18 @@ input{
 }
 .addbtn{
     height: 4vh;
-    width: 8vh;
+    width: 5vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-left: 1vh;
 }
+p{
+    display: inline-block;
+    font-size: 10px;
+    margin-right: 10px;
+}
 .warning{
     margin-top: 1vh;
+    font-size: 20px;
 }
 .container{
     margin-top: 1vh;
@@ -33,6 +39,7 @@ input{
     margin-bottom: 5vh;
 }
 #list2{
+    margin-right: 5vh;
     margin-top: 5vh;
     text-align: center;
 }
@@ -47,6 +54,15 @@ input{
         width: 45vh;
         font-size: 3vh;
     }
+    .addbtn{
+        width: 8vh;
+    }
+    #list1{
+        margin-right: 3vh;
+    }
+    #list2{
+        margin-right: 8vh;
+    }
 }
 @media (prefers-color-scheme: dark){
     .title{
@@ -60,6 +76,9 @@ input{
     }
     input{
         background-color: #433d3c;
+        color: white;
+    }
+    p{
         color: white;
     }
     #list2 input{
