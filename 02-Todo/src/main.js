@@ -5,7 +5,7 @@ if(todoList==null){
     window.localStorage.setItem('count', 0);
 }
 function loadStorage(){
-    window.localStorage.clear();
+    //window.localStorage.clear();
     if(localStorage.getItem('count')==null)
     {
         count = 0;
@@ -94,7 +94,7 @@ function edit(temp){
         child1.readOnly = false;
         child2.children[0].className = "icon-li icon-ok icon-2x";
     }
-    else{
+    else if(child1.value != ''){
         child1.style.borderColor = "white";
         child1.style.borderStyle = "none"
         todoList.forEach(todo=>{
@@ -110,6 +110,9 @@ function edit(temp){
         window.localStorage.setItem('todo', JSON.stringify(todoList));
         child1.readOnly = true;
         child2.children[0].className = "icon-fixed-width icon-pencil icon-2x";
+    }
+    else{
+        warning("Task cannot be empty");
     }
 }
 function done(temp){
