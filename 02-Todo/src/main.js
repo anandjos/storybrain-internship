@@ -89,7 +89,7 @@ function remove(temp){
 function edit(temp){
     let parent = temp.parentNode;
     let child1 = parent.children[1];
-    let child2 = parent.children[2];
+    let child2 = parent.children[3];
     if(child1.readOnly){
         child1.style.borderColor = "black";
         child1.style.borderStyle = "solid";
@@ -98,7 +98,7 @@ function edit(temp){
     }
     else if(child1.value != ''){
         child1.style.borderColor = "white";
-        child1.style.borderStyle = "none"
+        child1.style.borderStyle = "none";
         todoList.forEach(todo=>{
             if(todo.id == parent.id)
             {
