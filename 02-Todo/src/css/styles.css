@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    background-color: blanchedalmond;
+}
+.container{
+    background-color: white;
+    padding: 40px;
+    margin: 120px 30px;
+    max-width: 610px;
+    width: 95%;
+    position: relative;
+    top: 0;bottom: 0;left: 0;right: 0;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.title{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.addmenu{
+    display: flex;
+    height: 40px;
+    margin-bottom: 10px;
+}
+#taskfield{
+    flex: 1;
+    height: 40px;
+    padding-left: 5px;
+}
+#addbtn{
+    height: 45px;
+    width: 105px;
+    float: right;
+    border: none;
+    background-color: blue;
+    color: white;
+}
+.todolist{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.todo{
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+.todo:hover #icon{
+    visibility: visible;
+}
+.done{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background: cadetblue;
+    border-radius: 10px;
+}
+.done:hover #icon{
+    visibility: visible;
+}
+.done .ele{
+    background: cadetblue;
+}
+#done{
+    margin-left: 10px;
+    height: 50px;
+    float: left;
+}
+.ele{
+    width: 450px;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    background: #f2f2f2;
+}
+.time{
+    font-size: 10px;
+    margin-right: 3px;
+}
+#icon{
+    visibility: hidden;
+    padding: 5px;
+    font-size: 30px;
+}
+.clearbtn{
+    float: right;
+    width: 105px;
+    height: 35px;
+    border: none;
+    background-color: blue;
+    color: white;
+}
