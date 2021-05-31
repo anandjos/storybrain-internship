@@ -5,10 +5,10 @@
 body{
     display: flex;
     justify-content: center;
-    background-color: blanchedalmond;
+    background-color: #393e46;
 }
 .container{
-    background-color: white;
+    background-color: #00adb5;
     padding: 40px;
     margin: 120px 30px;
     max-width: 610px;
@@ -32,13 +32,16 @@ body{
     flex: 1;
     height: 40px;
     padding-left: 5px;
+    margin-right: 5px;
 }
 #addbtn{
+    font-weight: bold;
     height: 45px;
     width: 105px;
     float: right;
     border: none;
-    background-color: blue;
+    border-radius: 5px;
+    background-color: #aad8d3;
     color: white;
 }
 .todolist{
@@ -53,47 +56,63 @@ body{
     border-radius: 6px;
 }
 .todo:hover #icon{
-    visibility: visible;
+    color: black;
 }
 .done{
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     background: cadetblue;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 .done:hover #icon{
-    visibility: visible;
+    color: black;
 }
 .done .ele{
     background: cadetblue;
 }
 #done{
     margin-left: 10px;
-    height: 50px;
     float: left;
 }
 .ele{
-    width: 450px;
-    padding: 10px;
-    text-align: center;
+    font-family: nunito;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
     border: none;
-    background: #f2f2f2;
+    background: #eeeeee;
+    max-width: 450px;
+    width: 85%;
 }
 .time{
     font-size: 10px;
     margin-right: 3px;
 }
 #icon{
-    visibility: hidden;
+    color: #aad8d3;
     padding: 5px;
     font-size: 30px;
 }
 .clearbtn{
+    font-weight: bold;
     float: right;
     width: 105px;
     height: 35px;
     border: none;
-    background-color: blue;
+    border-radius: 5px;
+    background-color: #aad8d3;
     color: white;
+}
+@media (max-width: 650px){
+    .container{
+        padding: 20px;
+    }
+    .ele{
+        font-size: 14px;
+        padding-top: 5px;
+    }
+    #addbtn{
+        width: 60px;
+    }
 }
