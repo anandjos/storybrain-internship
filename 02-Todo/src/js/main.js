@@ -120,7 +120,8 @@ function done(temp) {
   location.reload();
 }
 function clr() {
-  console.log("hihihihih");
-  window.localStorage.clear();
-  location.reload();
+  if(window.confirm("Are you sure?")){
+    window.localStorage.clear();
+    location.reload();
+  }
 }
