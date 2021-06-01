@@ -82,7 +82,7 @@ body{
     padding-left: 10px;
     border: none;
     background: #eeeeee;
-    max-width: 450px;
+    max-width: 470px;
     width: 85%;
 }
 .time{
@@ -114,5 +114,8 @@ body{
     }
     #addbtn{
         width: 60px;
+    }
+    #icon{
+        font-size: 1em;
     }
 }
