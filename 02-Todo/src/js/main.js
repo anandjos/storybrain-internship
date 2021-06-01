@@ -79,7 +79,7 @@ function add() {
 function remove(temp) {
   if (window.confirm("Are you sure?")) {
     let id = temp.parentNode.getAttribute("id");
-    document.getElementById(id).innerHTML = "";
+    document.getElementById(id).remove();
     let todoList = getVal('todo');
     todoList.forEach((todo, i) => {
       if (todo.id == id) {
