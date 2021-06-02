@@ -192,30 +192,60 @@ function getRates() {
   };
 }
 
-function calculate() {
-  var cur1 = document.getElementById("curname1").value;
-  var cur2 = document.getElementById("curname2").value;
-  let value1 = document.getElementById("val1").value;
-  if (value1 != "") {
-    let x = rates[cur2] / rates[cur1];
-    document.getElementById("val2").value = (x * value1).toFixed(2);
+function getVal(item){
+  let val = window.localStorage.getItem(item);
+  if(val == null)
+    return [];
+    return JSON.parse(val);
+}
+
+function display() {
+  //window.localStorage.clear();
+  let transactions = getVal('history');
+  if (transactions.length == 0) {
+    console.log("empty");
+  } 
+  else {
+    transactions.forEach((transaction) => {
+      
+    });
   }
 }
 
-function convert(temp) {
-  let cur_id = temp.id;
-  let value = temp.value;
-  if (isNaN(value)) {
-    console.log("invalid");
-    temp.value = "";
+function warning(msg) {
+  document.getElementById("warning").innerHTML = msg;
+  setTimeout(function () {
+    document.getElementById("warning").innerHTML = "";
+  }, 900);
+}
+
+function addToLog(amount,from,to,result){
+  let history = getVal('history');
+  //console.log(history);
+  let timestamp = new Date();
+  let transaction = {
+    timestamp: timestamp,
+    amount: amount,
+    from: from,
+    to: to,
+    result: result
+  };
+  history.push(transaction);
+  window.localStorage.setItem("history", JSON.stringify(history));
+}
+
+function convert() {
+  let change_id = 'val2';
+  var from = document.getElementById("fromCur").value;
+  var to = document.getElementById("toCur").value;
+  let amount = document.getElementById("value").value;
+  if (isNaN(amount) || amount =='') {
+    warning("Enter amount correctly");
+    document.getElementById("value").value = '';
     return;
   }
-  var cur1 = document.getElementById("curname1").value;
-  var cur2 = document.getElementById("curname2").value;
-  let x = rates[cur2] / rates[cur1];
-  if (cur_id == "val1") {
-    document.getElementById("val2").value = (x * value).toFixed(2);
-  } else {
-    document.getElementById("val1").value = (value / x).toFixed(2);
-  }
+  let x = rates[to] / rates[from];
+  let result = (x * amount).toFixed(2);
+  document.getElementById("result").innerHTML = `<p>${amount} ${from} = ${result} ${to}</p>`;
+  addToLog(amount,from,to,result);  
 }
