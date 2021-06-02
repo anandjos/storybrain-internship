@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.cur1{
+    display: flex;
+}
+.cur2{
+    display: flex;
+}

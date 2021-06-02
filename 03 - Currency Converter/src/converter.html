@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Currency Converter</title>
+</head>
+<link rel="stylesheet" href="css/converter.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type = "text/javascript" src = "js/converter.js" ></script>
+<body>
+    <div class="container" id="container">
+        <div class="cur1" id="cur1">
+            <input id="val1" placeholder="Enter value" onkeyup="convert(this)">
+            <select name= "curname1" id="curname1" onchange="calculate()">
+                <option value="EUR" selected>Euro</option>
+                <option value="INR">Indian Rupee</option>
+                <option value="CAD">Canadian Dollar</option>
+                <option value="USD">US Dollar</option>
+                <option value="AUD">Australian Dollar</option>
+                <option value="GBP">Great British Pound</option>
+            </select>
+        </div>
+        <div class="cur2" id="cur2">
+            <input id="val2" placeholder="Enter value" onkeyup="convert(this)">
+            <select name= "curname2" id="curname2" onchange="calculate()">
+                <option value="EUR" selected>Euro</option>
+                <option value="INR">Indian Rupee</option>
+                <option value="CAD">Canadian Dollar</option>
+                <option value="USD">US Dollar</option>
+                <option value="AUD">Australian Dollar</option>
+                <option value="GBP">Great British Pound</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
