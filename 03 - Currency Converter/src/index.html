@@ -6,15 +6,16 @@
   </head>
   <link rel="stylesheet" href="css/converter.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <script type="text/javascript" src="js/converter.js"></script>
   <body>
     <div class="container" id="container">
       <div class="amount" id="amount">
-        <input id="value" placeholder="Enter amount" />
+        <input id="value" placeholder="Amount..." />
       </div>
       <p id="warning"></p>
-      <div class="from" id="from">
-        <select class="cur" name="fromCur" id="fromCur">
+      <div class="cur">
+        <select class="from" name="fromCur" id="fromCur">
           <option value="EUR" selected>Euro</option>
           <option value="INR">Indian Rupee</option>
           <option value="CAD">Canadian Dollar</option>
@@ -22,9 +23,8 @@
           <option value="AUD">Australian Dollar</option>
           <option value="GBP">Great British Pound</option>
         </select>
-      </div>
-      <div class="to" id="to">
-        <select class="cur" name="toCur" id="toCur">
+        <span class="txt">To</span>
+        <select class="to" name="toCur" id="toCur">
           <option value="EUR" selected>Euro</option>
           <option value="INR">Indian Rupee</option>
           <option value="CAD">Canadian Dollar</option>
@@ -36,10 +36,8 @@
       <div class="result" id="result">
 
       </div>
-      <div class="options">
-        <button onclick="convert()">Convert</button>
-        <a href="history()">History</a>
-      </div>
+        <button onclick="convert()">Convert</button></br>
+        <a href="history()"><i class="fas fa-history">history</i></a>
     </div>
   </body>
 </html>

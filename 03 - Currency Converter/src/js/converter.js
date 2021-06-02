@@ -146,23 +146,7 @@ let rates = {
   TRY: 10.529305,
   TTD: 8.169638,
   TWD: 33.781685,
-  TZS: 2830.724032,
-  UAH: 33.499826,
-  UGX: 4330.8843,
-  USD: 1.220666,
-  UYU: 53.558682,
-  UZS: 12893.493683,
-  VEF: 261015255074.0918,
-  VND: 28132.68638,
-  VUV: 132.328989,
-  WST: 3.071134,
-  XAF: 655.222088,
-  XAG: 0.043963,
-  XAU: 0.000643,
-  XCD: 3.298911,
-  XDR: 0.845159,
-  XOF: 655.235493,
-  XPF: 119.564443,
+  USD: 1.02345,
   YER: 305.166563,
   ZAR: 16.828411,
   ZMK: 10987.458071,
@@ -220,8 +204,8 @@ function warning(msg) {
 }
 
 function addToLog(amount,from,to,result){
+  //window.localStorage.clear();
   let history = getVal('history');
-  //console.log(history);
   let timestamp = new Date();
   let transaction = {
     timestamp: timestamp,
@@ -231,6 +215,7 @@ function addToLog(amount,from,to,result){
     result: result
   };
   history.push(transaction);
+  console.log(history);
   window.localStorage.setItem("history", JSON.stringify(history));
 }
 
@@ -240,12 +225,13 @@ function convert() {
   var to = document.getElementById("toCur").value;
   let amount = document.getElementById("value").value;
   if (isNaN(amount) || amount =='') {
-    warning("Enter amount correctly");
+    document.getElementById('result').innerHTML = '';
+    warning("Enter amount correctly!");
     document.getElementById("value").value = '';
     return;
   }
   let x = rates[to] / rates[from];
   let result = (x * amount).toFixed(2);
-  document.getElementById("result").innerHTML = `<p>${amount} ${from} = ${result} ${to}</p>`;
+  document.getElementById("result").innerHTML = `<p> ${result} ${to}</p>`;
   addToLog(amount,from,to,result);  
 }

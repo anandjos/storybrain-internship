@@ -3,80 +3,71 @@
   padding: 0;
 }
 body {
-  background: #867ae9;
+  background: #393e46;
   display: flex;
   justify-content: center;
 }
 .container {
   margin-top: 60px;
-  background: #867ae9;
+  background: #393e46;
   height: 600px;
-  max-width: 400px;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
+  max-width: 380px;
+  width: 100%;
 }
 input{
+  font-size: 25px;
+  height: 50px;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
-  background: #fff5ab;
+  border: none;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background: #00adb5;
+}
+.cur{
+  height: 50px;
+  align-items: center;
+  display: flex;
+  margin-top: 30px;
+}
+.from,.to{
+  background: #aad8d3;
+  height: 100%;
+  flex: 4;
+  border-radius: 5px;
+}
+.txt{
+  color: #00adb5;
+  flex: 2;
+  text-align: center;
 }
 #warning{
+  color: red;
+    margin: 20px;
     text-align: center;
     font-size: 15px;
 }
 .result{
+  color: #00adb5;
+  font-style: oblique;
+  margin-top: 30px;
   text-align: center;
   font-size: 25px;
 }
-.amount {
-  position: relative;
-  padding: 30px 5%;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-}
-#value {
-    padding: 10px;
-  height: 50px;
-  max-width: 260px;
-  width: 80%;
-}
-.from,.to {
-  position: relative;
-  padding: 10px 5%;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-}
-.cur{
-  border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  background: #ffcead;
-    height: 50px;
-  max-width: 300px;
-  width: 80%;
-}
-
-.options {
-  margin-top: 30px;
-  display: flex;
-  align-items: center;
-  height: 50px;
-  max-width: 400px;
-  width: 80%;
-}
-button,a{
-    position: relative;
-  padding: 10px 5%;
-  margin-left: 20%;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-}
 button{
-  border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  background: #c449c2;
-  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: #f4eee8;
+  margin-top: 40px;
+  width: 40%;
+  margin-left: 30%;
+  height: 40px;
+}
+a{
+  float: right;
+}
+i{
+  color: #eeeeee;
 }
