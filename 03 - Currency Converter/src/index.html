@@ -9,7 +9,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <script type="text/javascript" src="js/converter.js"></script>
   <body>
-    <div class="container" id="container">
+    <form class="container" id="container" onsubmit="convert();event.preventDefault()">
       <div class="amount" id="amount">
         <input id="value" placeholder="Amount..." />
       </div>
@@ -38,6 +38,6 @@
       </div>
         <button onclick="convert()">Convert</button></br>
         <a href="history()"><i class="fas fa-history">history</i></a>
-    </div>
+    </form>
   </body>
 </html>
