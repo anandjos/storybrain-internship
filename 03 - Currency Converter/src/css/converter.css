@@ -8,9 +8,12 @@ body {
   justify-content: center;
 }
 .container {
-  margin-top: 60px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   background: #393e46;
-  height: 600px;
+  height: 350px;
   max-width: 380px;
   width: 100%;
 }
