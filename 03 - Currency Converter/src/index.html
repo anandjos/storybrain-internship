@@ -11,7 +11,7 @@
   <body>
     <form class="container" id="container" onsubmit="convert();event.preventDefault()">
       <div class="amount" id="amount">
-        <input id="value" placeholder="Amount..." />
+        <input class = "value"id="value" value="1" placeholder="Amount..." />
       </div>
       <p id="warning"></p>
       <div class="cur">
@@ -33,8 +33,8 @@
           <option value="GBP">Great British Pound</option>
         </select>
       </div>
-      <div class="result" id="result">
-
+      <div class="amount">
+        <input class="value"id="result" value="1" placeholder="Result..." readonly />
       </div>
         <button type="submit">Convert</button></br>
         <a onclick="history()" ><i class="fas fa-history">history</i></a>

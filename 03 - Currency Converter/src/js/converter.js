@@ -217,14 +217,14 @@ function convert() {
   var to = document.getElementById("toCur").value;
   let amount = document.getElementById("value").value;
   if (isNaN(amount) || amount =='') {
-    document.getElementById('result').innerHTML = '';
+    document.getElementById('result').value = '';
     warning("Enter amount correctly!");
     document.getElementById("value").value = '';
     return;
   }
   let x = rates[to] / rates[from];
   let result = (x * amount).toFixed(2);
-  document.getElementById("result").innerHTML = `<p> ${result} ${to}</p>`;
+  document.getElementById("result").value = result;
   addToLog(amount,from,to,result);  
 }
 
