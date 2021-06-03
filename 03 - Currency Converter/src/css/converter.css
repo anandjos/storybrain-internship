@@ -74,3 +74,25 @@ a{
 i{
   color: #eeeeee;
 }
+ul{
+  margin: 20px 0;
+}
+li{
+  list-style: none;
+  font-size: 20px;
+  margin: 5px 0;
+}
+@media (min-width: 800px){
+  .container{
+    max-width: 600px;
+  }
+  input{
+    height: 60px;
+  }
+  .cur{
+    height: 60px;
+  }
+  button{
+    height: 50px;
+  }
+}

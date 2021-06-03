@@ -183,19 +183,6 @@ function getVal(item){
     return JSON.parse(val);
 }
 
-function display() {
-  //window.localStorage.clear();
-  let transactions = getVal('history');
-  if (transactions.length == 0) {
-    console.log("empty");
-  } 
-  else {
-    transactions.forEach((transaction) => {
-      
-    });
-  }
-}
-
 function warning(msg) {
   document.getElementById("warning").innerHTML = msg;
   setTimeout(function () {
@@ -206,7 +193,13 @@ function warning(msg) {
 function addToLog(amount,from,to,result){
   //window.localStorage.clear();
   let history = getVal('history');
-  let timestamp = new Date();
+  let date = new Date();
+  let timestamp = date.getDate()+
+  "/"+(date.getMonth()+1)+
+  "/"+date.getFullYear()+
+  " "+date.getHours()+
+  ":"+date.getMinutes()+
+  ":"+date.getSeconds();
   let transaction = {
     timestamp: timestamp,
     amount: amount,
@@ -214,7 +207,7 @@ function addToLog(amount,from,to,result){
     to: to,
     result: result
   };
-  history.push(transaction);
+  history.unshift(transaction);
   console.log(history);
   window.localStorage.setItem("history", JSON.stringify(history));
 }
@@ -233,4 +226,41 @@ function convert() {
   let result = (x * amount).toFixed(2);
   document.getElementById("result").innerHTML = `<p> ${result} ${to}</p>`;
   addToLog(amount,from,to,result);  
+}
+
+function addState() {
+  console.log("asdasdad");
+  
+}
+
+function history() {
+  let transactions = getVal('history');
+  if (transactions.length == 0) {
+    warning("History is empty");
+  } 
+  else {
+    document.body.innerHTML = '';
+    let div = document.createElement('div');
+    div.id = 'container';
+    document.body.append(div);
+    transactions.forEach((transaction) => {
+      let ul = document.createElement('ul');
+      let li1 = document.createElement('li');
+      let li2 = document.createElement('li');
+      let li3 = document.createElement('li');
+      let li4 = document.createElement('li');
+      let li5 = document.createElement('li');
+      li1.innerHTML = `<b>Timestamp:</b> ${transaction.timestamp}`;
+      ul.appendChild(li1);
+      li2.innerHTML = `<b>Amount   :</b> ${transaction.amount}`;
+      ul.appendChild(li2);
+      li3.innerHTML = `<b>From     :</b> ${transaction.from}`;
+      ul.append(li3);
+      li4.innerHTML = `<b>To       :</b> ${transaction.to}`;
+      ul.append(li4);
+      li5.innerHTML = `<b>Result   :</b> ${transaction.result}`;
+      ul.append(li5);
+      document.getElementById('container').append(ul);
+    });
+  }
 }
