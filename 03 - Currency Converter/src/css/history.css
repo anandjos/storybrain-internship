@@ -7,17 +7,30 @@ body{
     background: #212121;
 }
 .container{
+    background: darkcyan;
     display: flex;
 }
-.head{
+.head,.head2,.head3{
     flex: 1;
     text-align: center;
     padding: 20px 0;
     border: solid 1px;
 }
+.head2{
+    flex: 1.5;
+}
+.head3{
+    flex: 1.25;
+}
 .date,.amount,.result,.from,.to{
     flex: 1;
     text-align: center;
+}
+.amount,.result{
+    flex: 1.5;
+}
+.date{
+    flex: 1.25;
 }
 ul{
     border: 1px solid;
