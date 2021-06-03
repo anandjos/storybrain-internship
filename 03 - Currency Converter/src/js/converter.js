@@ -220,7 +220,6 @@ function addToLog(amount,from,to,result){
 }
 
 function convert() {
-  let change_id = 'val2';
   var from = document.getElementById("fromCur").value;
   var to = document.getElementById("toCur").value;
   let amount = document.getElementById("value").value;
