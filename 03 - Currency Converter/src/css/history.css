@@ -45,3 +45,8 @@ li{
     list-style: none;
     padding: 15px 0;
 }
+#warning{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
