@@ -154,6 +154,17 @@ let rates = {
   ZWL: 393.054783,
 };
 //let rates = {};
+function loadValues(){
+  let history = getVal('history');
+  if(history.length!=0){
+    let transaction = history[0];
+    document.getElementById('fromCur').value = transaction.from;
+    document.getElementById('toCur').value = transaction.to;
+    document.getElementById('value').value = transaction.amount;
+    document.getElementById('result').value = transaction.result;
+  }
+}
+
 function pollapi() {
   getRates();
   setInterval(getRates, 1000 * 20 * 60);

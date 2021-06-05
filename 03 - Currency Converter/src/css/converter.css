@@ -2,17 +2,25 @@
   margin: 0;
   padding: 0;
 }
-body {
+body{
   background: #323232;
+  margin: 20px;
+}
+.page{
   display: flex;
   justify-content: center;
+}
+.historybtn{
+  font-size: 20px;
+  color: white;
+  padding: 20px;
 }
 .container {
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  height: 350px;
+  /* height: 600px; */
   max-width: 380px;
   width: 100%;
 }
@@ -60,16 +68,11 @@ button{
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background: gray;
-  margin-top: 40px;
+  position: relative;
+  margin-top: 50%;
   width: 40%;
   margin-left: 30%;
   height: 50px;
-}
-a{
-  float: right;
-}
-i{
-  color: white;
 }
 @media (min-width: 800px){
   .container{
