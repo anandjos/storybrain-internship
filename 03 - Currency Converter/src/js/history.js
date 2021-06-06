@@ -19,8 +19,14 @@ function display() {
     transactions.forEach((transaction) => {
       let li = document.createElement("li");
       li.className = 'ele';
-      li.innerHTML = `<span class="time">${transaction.timestamp}</span>  ${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}`;
+      li.innerHTML = `<span class="time">${transaction.timestamp}</span>${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}`;
       ul.append(li);
     });
+  }
+}
+function clr(){
+  if(confirm("Are you sure?")){
+    window.localStorage.clear();
+    document.getElementById('list').innerHTML = '';
   }
 }
