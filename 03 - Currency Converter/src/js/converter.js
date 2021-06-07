@@ -1,4 +1,4 @@
-const API_KEY = "d30cebc25af4f2f66c7d0fb4dd01ffd7";
+const APP_ID = "ec257f4ffbad456abf0a7c2fa858f730";
 let rates = {};
 function loadValues(){
   let history = getVal('history');
@@ -17,7 +17,7 @@ function pollapi() {
 }
 
 function getRates() {
-  const url = `http://api.exchangeratesapi.io/v1/latest?access_key=${API_KEY}`;
+  const url = `https://openexchangerates.org/api/latest.json?app_id=${APP_ID}`
   let request = new XMLHttpRequest();
   request.open("GET", url);
   request.send();
