@@ -6,6 +6,10 @@
 body{
     background: #212121;
 }
+.listcontainer{
+    display: flex;
+    justify-content: center;
+}
 .container{
     background: darkcyan;
     display: flex;
@@ -31,9 +35,10 @@ ul{
     font-size: 30px;
 }
 .list{
-    margin: 20px 10%;
+    margin: 20px 0;
     position: absolute;
     width: 80%;
+    max-width: 600px;
 }
 .ele{
     border-radius: 5px;
