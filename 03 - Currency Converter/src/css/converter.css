@@ -3,8 +3,8 @@
   padding: 0;
 }
 body{
-  background: #323232;
   margin: 20px;
+  background: #eeeeee;
 }
 .page{
   display: flex;
@@ -12,7 +12,7 @@ body{
 }
 .historybtn{
   font-size: 20px;
-  color: white;
+  color: black;
   padding: 20px;
 }
 .container {
@@ -34,7 +34,6 @@ input{
   border-radius: 30px;
   border: none;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  background:rgb(0, 168, 168) ;
 }
 .cur{
   height: 50px;
@@ -46,7 +45,6 @@ input{
   text-align-last: center;
   border: none;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  background:;
   height: 100%;
   flex: 4;
   border-radius: 15px;
@@ -57,9 +55,6 @@ input{
   color: gray;
   flex: 2;
   text-align: center;
-}
-.txt{
-  color: white;
 }
 #warning{
   color: red;
@@ -72,7 +67,7 @@ button{
   border-radius: 30px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background: gray;
+  background: rgb(187, 187, 187);
   position: relative;
   margin-top: 50%;
   width: 40%;

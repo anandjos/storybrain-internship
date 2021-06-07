@@ -19,7 +19,7 @@ function display() {
     transactions.forEach((transaction) => {
       let li = document.createElement("li");
       li.className = 'ele';
-      li.innerHTML = `<span class="time">${transaction.timestamp}</span>${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}`;
+      li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span class="time">${transaction.timestamp}</span>`;
       ul.append(li);
     });
   }
