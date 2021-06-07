@@ -17,15 +17,21 @@ function display() {
     {
       const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       let date = new Date();
-      let today = date.getDate() + monthNames[date.getMonth()];
+      let today = date.getDate();
+      let month =  date.getMonth();
       let year = date.getFullYear();
     let ul = document.getElementById("list");
     transactions.forEach((transaction) => {
       let li = document.createElement("li");
       li.className = 'ele';
-      li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span id="time">${transaction.date}</span>`;
-      if(year==transaction.year && today == transaction.date)
+      if(transaction.year!=year)
+      li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span id="time">${transaction.date}/${transaction.month}/${transaction.year}</span>`;
+      else{
+        if(today == transaction.date && month== transaction.month)
       li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span id="time">${transaction.time}</span>`;
+        else li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span id="time">${transaction.date} ${monthNames[transaction.month]}</span>`;
+      }
+      
       ul.append(li);
     });
   }

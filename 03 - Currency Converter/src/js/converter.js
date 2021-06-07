@@ -51,13 +51,17 @@ function addToLog(amount,from,to,result){
   //window.localStorage.clear();
   let history = getVal('history');
   let date = new Date();
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  let time = date.getHours() + ":" + date.getMinutes();
-  let today = date.getDate() + monthNames[date.getMonth()];
+  let time = date.getHours();
+  if(date.getMinutes()<10)
+  time = time + ":" + '0' + date.getMinutes();
+  else time = time + ':' + date.getMinutes();
+  let today = date.getDate();
+  let month =  date.getMonth();
   let year = date.getFullYear();
   let transaction = {
-    date: today,
     time: time,
+    date: today,
+    month: month,
     year: year,
     amount: amount,
     from: from,
