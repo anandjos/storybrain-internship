@@ -15,11 +15,17 @@ function display() {
     warning("History is empty");
   } else 
     {
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      let date = new Date();
+      let today = date.getDate() + monthNames[date.getMonth()];
+      let year = date.getFullYear();
     let ul = document.getElementById("list");
     transactions.forEach((transaction) => {
       let li = document.createElement("li");
       li.className = 'ele';
-      li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span class="time">${transaction.timestamp}</span>`;
+      li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span id="time">${transaction.date}</span>`;
+      if(year==transaction.year && today == transaction.date)
+      li.innerHTML = `${transaction.amount} ${transaction.from} = ${transaction.result} ${transaction.to}<span id="time">${transaction.time}</span>`;
       ul.append(li);
     });
   }

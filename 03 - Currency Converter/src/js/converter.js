@@ -51,21 +51,21 @@ function addToLog(amount,from,to,result){
   //window.localStorage.clear();
   let history = getVal('history');
   let date = new Date();
-  let timestamp = date.getDate()+
-  "/"+(date.getMonth()+1)+
-  "/"+date.getFullYear()+
-  " "+date.getHours()+
-  ":"+date.getMinutes()+
-  ":"+date.getSeconds();
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  let time = date.getHours() + ":" + date.getMinutes();
+  let today = date.getDate() + monthNames[date.getMonth()];
+  let year = date.getFullYear();
   let transaction = {
-    timestamp: timestamp,
+    date: today,
+    time: time,
+    year: year,
     amount: amount,
     from: from,
     to: to,
     result: result
   };
   history.unshift(transaction);
-  console.log(history);
+  //console.log(history);
   window.localStorage.setItem("history", JSON.stringify(history));
 }
 
