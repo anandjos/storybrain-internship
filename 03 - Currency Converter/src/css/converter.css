@@ -51,10 +51,15 @@ input{
   flex: 4;
   border-radius: 15px;
 }
-.txt{
-  color: white;
+.change{
+  display: flex;
+  flex-direction: column;
+  color: gray;
   flex: 2;
   text-align: center;
+}
+.txt{
+  color: white;
 }
 #warning{
   color: red;

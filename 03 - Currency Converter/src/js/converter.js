@@ -234,7 +234,15 @@ function convert() {
     return;
   }
   let x = rates[to] / rates[from];
-  let result = (x * amount).toFixed(2);
+  let result = (x * amount);
+  if(result<1)
+  result = result.toFixed(1-Math.floor(Math.log(result)/Math.log(10)));
+  else result = result.toFixed(2);
   document.getElementById("result").value = result;
   addToLog(amount,from,to,result);  
+}
+function exchange(){
+  let temp = document.getElementById('fromCur').value;
+  document.getElementById('fromCur').value = document.getElementById('toCur').value;
+  document.getElementById('toCur').value = temp;
 }
