@@ -60,3 +60,6 @@ img{
     flex: 1;
     float: right;
 }
+.dynamicsparkline{
+   display: block;
+}

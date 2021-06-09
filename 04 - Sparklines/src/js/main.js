@@ -34,4 +34,14 @@ function getValues(data) {
     ).innerHTML = `<img src="img/up.svg" alt="high" width="20" height="30">${change}%`;
     document.getElementById("change").style.color = "green";
   }
+
+  //Sparkline 
+  //fillColor: '' lineColor: ''
+
+    var rates = [];
+    for (var key in data) {
+      if (!data.hasOwnProperty(key)) continue;
+      rates.push(data[key].Rate);
+  }
+  $('.dynamicsparkline').sparkline(rates, {height: 150,width: 250, lineWidth: 1.5});
 }
