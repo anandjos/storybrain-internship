@@ -5,10 +5,10 @@
     <title>Sparkline</title>
 </head>
 <link rel="stylesheet" href="css/styles.css">
-<script type="text/javascript" src="2016.json"></script>
-<script type="text/javascript" src="2017.json"></script>
+<script type="text/javascript" src="jquery-1.7.2.js"></script>
+<script type="text/javascript" src="jquery.sparkline.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<body onload="getValues()">
+<body onload="getData()">
     <div class="container">
         <select name="pair" id="pair">
             <option value="BTC-ETH">BTC-ETH</option>
@@ -22,7 +22,7 @@
             <span class="low" id="low">$25</span>
             <span class="high" id="high">$70</span>
         </div>
-        <select name="period" id="period">
+        <select name="period" id="period" onchange="getData()">
             <option value="2016">2016</option>
             <option value="2017">2017</option>
         </select>
