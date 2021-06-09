@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Sparkline</title>
+</head>
+<link rel="stylesheet" href="css/styles.css">
+<script type="text/javascript" src="2016.json"></script>
+<script type="text/javascript" src="2017.json"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<body onload="getValues()">
+    <div class="container">
+        <select name="pair" id="pair">
+            <option value="BTC-ETH">BTC-ETH</option>
+        </select></br>
+        <div class="change" id="change"><img src="img/up.svg" alt="high" width="20" height="30">8.5%</div>
+        <div class="lh">
+            <span class="low">LOW</span>
+            <span class="high">HIGH</span>
+        </div>
+        <div class="lh" id="lh">
+            <span class="low" id="low">$25</span>
+            <span class="high" id="high">$70</span>
+        </div>
+        <select name="period" id="period">
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+        </select>
+    </div>
+</body>
+</html>
