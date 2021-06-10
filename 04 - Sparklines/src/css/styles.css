@@ -27,10 +27,14 @@ select{
     margin: 10px;
     height: 40px;
 }
-img{
+.changeid{
     height: 10px;
     width: 20px;
 
+}
+.lhicon{
+    height: 20px;
+    width: 30px;
 }
 #pair{
     font-weight: bold;

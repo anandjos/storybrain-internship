@@ -30,14 +30,10 @@
         <select name="pair" id="pair">
             <option value="BTC-ETH">BTC-ETH</option>
         </select></br>
-        <div class="change" id="change"><img src="img/up.svg" alt="high" width="20" height="30">8.5%</div>
-        <div class="lh">
-            <span class="low">LOW</span>
-            <span class="high">HIGH</span>
-        </div>
+        <div class="change" id="change"><img class="changeid" src="img/up.svg" alt="up" width="20" height="30">8.5%</div>
         <div class="lh" id="lh">
-            <span class="low" id="low">$25</span>
-            <span class="high" id="high">$70</span>
+            <div class="low"><img class="lhicon" src="img/low.svg" alt=""><span id="low">$25</span></div>
+            <div class="high"><img class="lhicon" src="img/high.svg" alt=""><span id="high">$70</span></div>
         </div>
         <span class="dynamicsparkline"></span>
         <select name="period" id="period" onchange="getData()">

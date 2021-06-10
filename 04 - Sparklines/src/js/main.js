@@ -26,22 +26,21 @@ function getValues(data) {
   if (change < 0) {
     document.getElementById(
       "change"
-    ).innerHTML = `<img src="img/down.svg" alt="high" width="20" height="30">${change}%`;
+    ).innerHTML = `<img class="changeid" src="img/down.svg" alt="down" width="20" height="30">${change}%`;
     document.getElementById("change").style.color = "red";
   } else {
     document.getElementById(
       "change"
-    ).innerHTML = `<img src="img/up.svg" alt="high" width="20" height="30">${change}%`;
+    ).innerHTML = `<img class="changeid" src="img/up.svg" alt="up" width="20" height="30">${change}%`;
     document.getElementById("change").style.color = "green";
   }
 
   //Sparkline 
   //fillColor: '' lineColor: ''
-
     var rates = [];
     for (var key in data) {
       if (!data.hasOwnProperty(key)) continue;
       rates.push(data[key].Rate);
   }
-  $('.dynamicsparkline').sparkline(rates, {height: 150,width: 250, lineWidth: 1.5});
+  $('.dynamicsparkline').sparkline(rates, {height: 150,width: 250, lineWidth: 1,chartRangeMin: 0});
 }
