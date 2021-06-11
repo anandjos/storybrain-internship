@@ -25,21 +25,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.js" integrity="sha512-/F8GvcdSUiYuL8wFMLRspx/PemIOOZBMiro7M9Wwn9V/wfzIH+RwIauASTQdJqaaZdSHBP4lmtq6VH5bbTNaJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<body onload="getData()">
-    <div class="container">
+<body onload="loadData()">
+    <div id="add">
+        <img class="add" src="img/add.svg" alt="add" onclick="displayAdd()">
+    </div>
+    <form class="addform" id="addform" onsubmit="add(this.children[0].value,this.children[1].value);event.preventDefault()">
         <select name="pair" id="pair">
             <option value="BTC-ETH">BTC-ETH</option>
-        </select></br>
-        <div class="change" id="change"><img class="changeid" src="img/up.svg" alt="up" width="20" height="30">8.5%</div>
-        <div class="lh" id="lh">
-            <div class="low"><img class="lhicon" src="img/low.svg" alt=""><span id="low">$25</span></div>
-            <div class="high"><img class="lhicon" src="img/high.svg" alt=""><span id="high">$70</span></div>
-        </div>
-        <span class="dynamicsparkline"></span>
-        <select name="period" id="period" onchange="getData()">
+        </select>
+        <select name="period" id="period">
             <option value="2016">2016</option>
             <option value="2017">2017</option>
         </select>
+        <button type="submit" class="addbtn">ADD</button>
+    </form>    
+    <div class="container" id="container">
     </div>
 </body>
 </html>

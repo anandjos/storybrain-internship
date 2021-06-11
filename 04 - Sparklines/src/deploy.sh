@@ -1,1 +1,1 @@
-surge . sparklines-v3.surge.sh
+surge . sparklines-v4.surge.sh

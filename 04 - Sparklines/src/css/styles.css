@@ -5,20 +5,20 @@
 }
 body{
     background: #867ae9;
-    display: flex;
-    justify-content: center;
 }
 .container{
+    background: #867ae9;
+    display: flex;
+    flex-direction: column;
+}
+.box{
+    margin: 0px auto 40px auto;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background: white;
     text-align: center;
     padding: 10px;
-    position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  max-width: 600px;
+  max-width: 500px;
   width: 70%;
 }
 select{
@@ -26,6 +26,21 @@ select{
     background: white;
     margin: 10px;
     height: 40px;
+}
+.delete{
+    float: right;
+    height: 30px;
+    width: 20px;
+}
+#add{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto 0 auto;
+}
+.add{
+    height: 60px;
+    width: 50px;
 }
 .changeid{
     height: 10px;
@@ -66,4 +81,21 @@ select{
 }
 .dynamicsparkline{
    display: block;
+}
+
+.addform{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto 10px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: white;
+    padding: 10px;
+  max-width: 500px;
+  width: 70%;
+}
+.addbtn{
+    height: 40px;
+    width: 60px;
 }
