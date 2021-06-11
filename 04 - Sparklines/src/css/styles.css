@@ -87,7 +87,7 @@ select{
     display: none;
     flex-direction: column;
     align-items: center;
-    margin: 10px auto 10px auto;
+    margin: 10px auto 20px auto;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background: white;
@@ -96,6 +96,10 @@ select{
   width: 70%;
 }
 .addbtn{
+    color: white;
+    background: #867ae9;
     height: 40px;
     width: 60px;
+    border-radius: 5px;
+    border: none;
 }

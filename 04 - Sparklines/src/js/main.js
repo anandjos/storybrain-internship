@@ -50,8 +50,8 @@ function getValues(data,id) {
     if (element.Rate < min) min = element.Rate;
     if (element.Rate > max) max = element.Rate;
   });
-  parent.querySelector('#low').innerHTML = `$${min}`;
-  parent.querySelector('#high').innerHTML = `$${max}`;
+  parent.querySelector('#low').innerHTML = `${min}`;
+  parent.querySelector('#high').innerHTML = `${max}`;
   let change = ((last - first) / first) * 100;
   if (Math.abs(change) < 1)
     change = change.toFixed(1 - Math.floor(Math.log(change) / Math.log(10)));
@@ -123,8 +123,8 @@ function displayBox(id,pair,year){
   </br>
   <div class="change" id="change">0%</div>
   <div class="lh" id="lh">
-      <div class="low"><img class="lhicon" src="img/low.svg" alt=""><span id="low">$0</span></div>
-      <div class="high"><img class="lhicon" src="img/high.svg" alt=""><span id="high">$0</span></div>
+      <div class="low"><img class="lhicon" src="img/low.svg" alt=""><span id="low">0</span></div>
+      <div class="high"><img class="lhicon" src="img/high.svg" alt=""><span id="high">0</span></div>
   </div>
   <span class="dynamicsparkline"></span>
   <span name="period" id="period">${year}</span>
