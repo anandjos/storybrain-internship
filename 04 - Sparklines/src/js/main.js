@@ -32,23 +32,32 @@ function warning(msg) {
   }, 900);
 }
 
+// function temp(data){
+//   var rates = [];
+//     for (var key in data) {
+//       if (!data.hasOwnProperty(key)) continue;
+//       rates.push(parseFloat(data[key].Rate));
+//   }
+//   console.log(rates);
+// }
+
 function getData(pair,year,id) {
   //console.log("first fn");
   fetch(`data/${pair}/${year}.json`)
     .then((response) => response.json())
-    .then((data) => getValues(data[year],id));
+    .then((data) => getValues(data['prices'],id))
 }
 
 function getValues(data,id) {
   let parent = document.getElementById(id);
-  let first = parseFloat(data[0].Rate),
-    last = parseFloat(data[data.length - 1].Rate);
-  let min = parseFloat(data[0].Rate),
-    max = parseFloat(data[0].Rate);
-  data.forEach((element, i) => {
-    element.Rate = parseFloat(element.Rate);
-    if (element.Rate < min) min = element.Rate;
-    if (element.Rate > max) max = element.Rate;
+  let first = parseFloat(data[0]),
+    last = parseFloat(data[data.length - 1]);
+  let min = parseFloat(data[0]),
+    max = parseFloat(data[0]);
+  data.forEach((Rate, i) => {
+    Rate = parseFloat(Rate);
+    if (Rate < min) min = Rate;
+    if (Rate > max) max = Rate;
   });
   parent.querySelector('#low').innerHTML = `${min}`;
   parent.querySelector('#high').innerHTML = `${max}`;
@@ -70,12 +79,8 @@ function getValues(data,id) {
 
   //Sparkline 
   //fillColor: '' lineColor: ''
-    var rates = [];
-    for (var key in data) {
-      if (!data.hasOwnProperty(key)) continue;
-      rates.push(data[key].Rate);
-  }
-  $(`#${id} .dynamicsparkline`).sparkline(rates, {height: 150,width: 250, lineWidth: 1,chartRangeMin: 0});
+    
+  $(`#${id} .dynamicsparkline`).sparkline(data, {height: 150,width: 250, lineWidth: 1,chartRangeMin: 0});
 }
 
 function remove(node){
@@ -97,7 +102,7 @@ function displayAdd(){
 }
 
 function add(pair,year){
-  let count = window.localStorage.getItem('count');
+    let count = window.localStorage.getItem('count');
   if(count == null)
   count = 0;
   let sparkline = getVal('sparkline');

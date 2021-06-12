@@ -31,11 +31,25 @@
     </div>
     <form class="addform" id="addform" onsubmit="add(this.children[0].value,this.children[1].value);event.preventDefault()">
         <select name="pair" id="pair">
+            <option value="ADA-USD">ADA-USD</option>
+            <option value="BCH-USD">BCH-USD</option>
+            <option value="BNB-USD">BNB-USD</option>
             <option value="BTC-ETH">BTC-ETH</option>
+            <option value="BTC-USD">BTC-USD</option>
+            <option value="ETH-USD">ETH-USD</option>
+            <option value="DOGE-USD">DOGE-USD</option>
+            <option value="DOT-USD">DOT-USD</option>
+            <option value="ETC-USD">ETC-USD</option>
+            <option value="FTM-USD">FTM-USD</option>
+            <option value="LINK-USD">LINK-USD</option>
+            <option value="SOL-USD">SOL-USD</option>
         </select>
         <select name="period" id="period">
             <option value="2016">2016</option>
             <option value="2017">2017</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
         </select>
         <button type="submit" class="addbtn">ADD</button>
     </form>    
