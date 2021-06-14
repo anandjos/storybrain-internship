@@ -6,15 +6,16 @@ function loadData(){
     //console.log("hello");
     let box = {
       id: 'pair00',
-      pair: 'BTC-ETH',
-      year: '2016'
+      from: 'BTC',
+      to: 'ETH',
+      year: '2021'
     };
     sparkline.unshift(box);
-    displayBox(box.id,box.pair,box.year);
+    displayBox(box.id,box.from,box.to,box.year);
     window.localStorage.setItem("sparkline", JSON.stringify(sparkline));
   }
   else sparkline.forEach(box=>{
-    displayBox(box.id,box.pair,box.year);
+    displayBox(box.id,box.from,box.to,box.year);
   });
 }
 
@@ -32,6 +33,27 @@ function warning(msg) {
   }, 900);
 }
 
+function invert(node){
+  let id = node.parentNode.id;
+  var from,to,year;
+  let sparkline = getVal('sparkline');
+  sparkline.forEach((box)=>{
+    if(box.id == id)
+    {
+      let temp = box.from;
+      box.from = box.to;
+      box.to = temp;
+      from = `${box.from}`;
+      to = `${box.to}`;
+      year = box.year;
+      return;
+    }
+  })
+  window.localStorage.setItem("sparkline", JSON.stringify(sparkline));
+  let card = document.getElementById(id);
+  card.querySelector('#pair').innerHTML = `${from}/${to}`;
+  getData(from,to,year,id);
+}
 // function temp(data){
 //   var rates = [];
 //     for (var key in data) {
@@ -41,21 +63,37 @@ function warning(msg) {
 //   console.log(rates);
 // }
 
-function getData(pair,year,id) {
+function getData(from,to,year,id) {
   //console.log("first fn");
-  fetch(`data/${pair}/${year}.json`)
+  let prices = [];
+  fetch(`data/${from}/${year}.json`)
     .then((response) => response.json())
-    .then((data) => getValues(data['prices'],id))
+    .then((data) => 
+    {
+      prices = data['prices'];
+      return fetch(`data/${to}/${year}.json`)
+      .then((response) => response.json())
+      .then((data) => getValues(prices,data['prices'],id)); 
+    })
 }
 
-function getValues(data,id) {
+function getValues(datafrom,datato,id) {
+  //console.log('hihhii',datafrom,datato,id);
+  var data = [];
+  datafrom.forEach((Rate,i) =>{
+    let price = datafrom[i]/datato[i];
+    if (price < 1)
+    price = price.toFixed(1 - Math.floor(Math.log(price) / Math.log(10)));
+    else price = price.toFixed(2);
+    data.push(price);
+  });
   let parent = document.getElementById(id);
-  let first = parseFloat(data[0]),
-    last = parseFloat(data[data.length - 1]);
-  let min = parseFloat(data[0]),
-    max = parseFloat(data[0]);
+  let first = (data[0]),
+    last = (data[data.length - 1]);
+  let min = (data[0]),
+    max = (data[0]);
   data.forEach((Rate, i) => {
-    Rate = parseFloat(Rate);
+    Rate = (Rate);
     if (Rate < min) min = Rate;
     if (Rate > max) max = Rate;
   });
@@ -101,14 +139,18 @@ function displayAdd(){
   document.getElementById('addform').style.display = 'flex';
 }
 
-function add(pair,year){
-    let count = window.localStorage.getItem('count');
+function add(node){
+  let from = node.querySelector('#c1').value;
+  let to = node.querySelector('#c2').value;
+  let year = node.querySelector('#period').value;
+  let count = window.localStorage.getItem('count');
   if(count == null)
   count = 0;
   let sparkline = getVal('sparkline');
   let box = {
     id: `pair${count}`,
-    pair: pair,
+    from: from,
+    to: to,
     year: year
   };
   count++;
@@ -117,14 +159,15 @@ function add(pair,year){
   window.localStorage.setItem("sparkline", JSON.stringify(sparkline));
   window.localStorage.setItem("count", count);
   document.getElementById('addform').style.display = 'none';
-  displayBox(box.id,pair,year);
+  displayBox(box.id,from,to,year);
 }
 
-function displayBox(id,pair,year){
+function displayBox(id,from,to,year){
   let boxHTML = 
   `<div class="box" id="${id}">
-  <span name="pair" id="pair">${pair}</span>
-  <img class="delete" src="img/delete.svg" alt="delete" onclick="remove(this)">
+  <span name="pair" id="pair">${from}/${to}</span>
+  <img class="delete" src="img/delete.svg" alt="delete" onclick="remove(this)"></br>
+  <img class="invert" src="img/swap.svg" alt="invert" onclick="invert(this)">
   </br>
   <div class="change" id="change">0%</div>
   <div class="lh" id="lh">
@@ -136,5 +179,5 @@ function displayBox(id,pair,year){
 </div>`;
   let container = document.getElementById('container');
   container.insertAdjacentHTML('afterbegin',boxHTML);
-  getData(pair,year,id);
+  getData(from,to,year,id);
 }
