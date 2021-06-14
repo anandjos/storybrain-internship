@@ -3,7 +3,6 @@ function loadData(){
   let sparkline = getVal('sparkline');
   if(sparkline.length==0)
   {
-    //console.log("hello");
     let box = {
       id: 'pair00',
       from: 'BTC',
@@ -54,14 +53,6 @@ function invert(node){
   card.querySelector('#pair').innerHTML = `${from}/${to}`;
   getData(from,to,year,id);
 }
-// function temp(data){
-//   var rates = [];
-//     for (var key in data) {
-//       if (!data.hasOwnProperty(key)) continue;
-//       rates.push(parseFloat(data[key].Rate));
-//   }
-//   console.log(rates);
-// }
 
 function getData(from,to,year,id) {
   //console.log("first fn");
@@ -85,7 +76,7 @@ function getValues(datafrom,datato,id) {
     if (price < 1)
     price = price.toFixed(1 - Math.floor(Math.log(price) / Math.log(10)));
     else price = price.toFixed(2);
-    data.push(price);
+    data.push(parseFloat(price));
   });
   let parent = document.getElementById(id);
   let first = (data[0]),
@@ -93,7 +84,6 @@ function getValues(datafrom,datato,id) {
   let min = (data[0]),
     max = (data[0]);
   data.forEach((Rate, i) => {
-    Rate = (Rate);
     if (Rate < min) min = Rate;
     if (Rate > max) max = Rate;
   });
@@ -155,7 +145,7 @@ function add(node){
   };
   count++;
   sparkline.push(box);
-  console.log(sparkline);
+  //console.log(sparkline);
   window.localStorage.setItem("sparkline", JSON.stringify(sparkline));
   window.localStorage.setItem("count", count);
   document.getElementById('addform').style.display = 'none';
