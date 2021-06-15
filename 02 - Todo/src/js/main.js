@@ -1,20 +1,17 @@
-function getVal(item){
-  let val = window.localStorage.getItem(item);
-  if(val == null)
-    return [];
-    return JSON.parse(val);
+function getVal(item) {
+  const val = window.localStorage.getItem(item);
+  if (val == null) return [];
+  return JSON.parse(val);
 }
 
 function loadStorage() {
   //window.localStorage.clear();
-  let todoList = getVal('todo');
+  const todoList = getVal("todo");
   if (todoList.length == 0) {
     window.localStorage.setItem("count", 0);
-  } 
-  else {
+  } else {
     todoList.forEach((todo) => {
-      if (todo.isDone == false) addTaskElement(todo.task, todo.id, todo.time);
-      else addTaskElement2(todo.task, todo.id, todo.time);
+      addTaskElement(todo);
     });
   }
 }
@@ -26,42 +23,38 @@ function warning(msg) {
   }, 900);
 }
 
-function addTaskElement(task, id, time) {
-  let taskHTML = `<div class="todo" id=${id}>
+function addTaskElement(todo) {
+  const taskHTML = `<div class="todo" id=${todo.id}>
     <input type="checkbox" id="done" onclick="done(this)">
-    <textarea class="ele" id="ele" readonly>${task}</textarea>
-    <span class="time">${time}</span>
-    <a onclick="edit(this)"><i id="icon" class="fa fa-pencil-alt"></i></a>
+    <textarea class="ele" id="ele" readonly>${todo.task}</textarea>
+    <span class="time">${todo.time}</span>
+    <a onclick="edit(this)" id="edit"><i id="icon" class="fa fa-pencil-alt"></i></a>
     <a onclick="remove(this)"><i id="icon" class="fa fa-trash"></i></a></br>
     </div>`;
-  document.getElementById("list1").insertAdjacentHTML("afterbegin", taskHTML);
-}
-
-function addTaskElement2(task, id, time) {
-  let taskHTML = `<div class="done" id=${id}>
-    <input type="checkbox" checked="true" id="done" onclick="done(this)">
-    <textarea class="ele" id="ele" readonly>${task}</textarea>
-    <span class="time">${time}</span>
-    <a onclick="remove(this)"><i id="icon" class="fa fa-trash"></i></a></br>
-    </div>`;
-  document.getElementById("list2").insertAdjacentHTML("beforeend", taskHTML);
+  if (todo.isDone == false)
+    document.getElementById("list1").insertAdjacentHTML("afterbegin", taskHTML);
+  else {
+    document.getElementById("list2").insertAdjacentHTML("beforeend", taskHTML);
+    const task = document.getElementById(todo.id);
+    task.className = "done";
+    task.querySelector("#done").checked = true;
+    task.querySelector("#edit").style.display = "none";
+  }
 }
 
 function add() {
-  var taskname = document.getElementById("taskfield").value;
+  const taskname = document.getElementById("taskfield").value;
   document.getElementById("taskfield").value = "";
   if (taskname === "") {
     warning("Enter taskname!");
     return;
   }
+
+  let todoList = getVal("todo");
+  let count = window.localStorage.getItem("count");
+  if (count == null) count = 0;
   const date = new Date();
-  var time = date.getHours() + ":" + date.getMinutes();
-
-  let todoList = getVal('todo');
-  let count = window.localStorage.getItem('count');
-  if(count == null)
-  count = 0;
-
+  const time = date.getHours() + ":" + date.getMinutes();
   const todo = {
     id: `task${count}`,
     task: taskname,
@@ -72,22 +65,21 @@ function add() {
   todoList.push(todo);
   window.localStorage.setItem("todo", JSON.stringify(todoList));
   window.localStorage.setItem("count", count);
-  addTaskElement(taskname, todo.id, todo.time);
-  //console.log(todoList);
+  addTaskElement(todo);
 }
 
 function remove(temp) {
   if (window.confirm("Are you sure?")) {
-    let id = temp.parentNode.getAttribute("id");
+    const id = temp.parentNode.getAttribute("id");
     document.getElementById(id).remove();
-    let todoList = getVal('todo');
+    let todoList = getVal("todo");
     todoList.forEach((todo, i) => {
       if (todo.id == id) {
         todoList.splice(i, 1);
         return;
       }
     });
-    if(todoList.length == 0){
+    if (todoList.length == 0) {
       window.localStorage.setItem("count", 0);
     }
     window.localStorage.setItem("todo", JSON.stringify(todoList));
@@ -105,11 +97,11 @@ function edit(temp) {
     child2.children[0].className = "fa fa-check-circle";
   } else if (child1.value != "") {
     child1.style.borderStyle = "none";
-    let todoList = getVal('todo');
+    let todoList = getVal("todo");
     todoList.forEach((todo) => {
       if (todo.id == parent.id) {
-        let date = new Date();
-        let time = date.getHours() + ":" + date.getMinutes();
+        const date = new Date();
+        const time = date.getHours() + ":" + date.getMinutes();
         todo.time = time;
         todo.task = child1.value;
         return;
@@ -124,13 +116,13 @@ function edit(temp) {
 }
 
 function done(temp) {
-  let parent = temp.parentNode;
-  let id = parent.getAttribute("id");
-  let todoList = getVal('todo');
+  const parent = temp.parentNode;
+  const id = parent.getAttribute("id");
+  let todoList = getVal("todo");
   todoList.forEach((todo) => {
     if (todo.id == id) {
       const date = new Date();
-      var time = date.getHours() + ":" + date.getMinutes();
+      let time = date.getHours() + ":" + date.getMinutes();
       todo.isDone = !todo.isDone;
       todo.time = time;
       return;
@@ -141,7 +133,7 @@ function done(temp) {
 }
 
 function clr() {
-  if(window.confirm("Are you sure?")){
+  if (window.confirm("Are you sure?")) {
     window.localStorage.clear();
     location.reload();
   }
