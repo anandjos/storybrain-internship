@@ -7,13 +7,9 @@ function getVal(item) {
 function loadStorage() {
   //window.localStorage.clear();
   const todoList = getVal("todo");
-  if (todoList.length == 0) {
-    window.localStorage.setItem("count", 0);
-  } else {
     todoList.forEach((todo) => {
       addTaskElement(todo);
     });
-  }
 }
 
 function warning(msg) {
@@ -21,6 +17,17 @@ function warning(msg) {
   setTimeout(function () {
     document.getElementById("warning").innerHTML = "";
   }, 900);
+}
+
+function makeid() {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  for (var i = 0; i < 4; i++) {
+    result += characters[Math.floor(Math.random() * charactersLength)];
+  }
+  return result;
 }
 
 function addTaskElement(todo) {
@@ -49,22 +56,17 @@ function add() {
     warning("Enter taskname!");
     return;
   }
-
   let todoList = getVal("todo");
-  let count = window.localStorage.getItem("count");
-  if (count == null) count = 0;
   const date = new Date();
   const time = date.getHours() + ":" + date.getMinutes();
   const todo = {
-    id: `task${count}`,
+    id: `${makeid()}`,
     task: taskname,
     isDone: false,
     time: time,
   };
-  count++;
   todoList.push(todo);
   window.localStorage.setItem("todo", JSON.stringify(todoList));
-  window.localStorage.setItem("count", count);
   addTaskElement(todo);
 }
 
@@ -79,9 +81,6 @@ function remove(temp) {
         return;
       }
     });
-    if (todoList.length == 0) {
-      window.localStorage.setItem("count", 0);
-    }
     window.localStorage.setItem("todo", JSON.stringify(todoList));
   }
 }
