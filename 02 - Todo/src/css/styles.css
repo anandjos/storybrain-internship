@@ -44,6 +44,9 @@ body{
     background-color: #aad8d3;
     color: white;
 }
+button:hover{
+    cursor: pointer;
+}
 .todolist{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -55,7 +58,8 @@ body{
     margin-bottom: 10px;
     border-radius: 6px;
 }
-.todo:hover #icon{
+#icon:hover{
+    cursor: pointer;
     color: black;
 }
 .done{
@@ -64,9 +68,6 @@ body{
     margin-bottom: 10px;
     background: cadetblue;
     border-radius: 6px;
-}
-.done:hover #icon{
-    color: black;
 }
 .done .ele{
     background: cadetblue;
