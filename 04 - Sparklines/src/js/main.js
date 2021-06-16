@@ -30,6 +30,17 @@ function warning(msg) {
   }, 900);
 }
 
+function makeid() {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  for (var i = 0; i < 4; i++) {
+    result += characters[Math.floor(Math.random() * charactersLength)];
+  }
+  return result;
+}
+
 function invert(node) {
   const id = node.parentNode.id;
   let from, to, year;
@@ -51,7 +62,7 @@ function invert(node) {
   getData(from, to, year, id);
 }
 
-function change(node){
+function change(node) {
   const id = node.parentNode.id;
   let from, to, year;
   year = node.value;
@@ -153,20 +164,16 @@ function add(node) {
   let from = node.querySelector("#c1").value;
   let to = node.querySelector("#c2").value;
   let year = node.querySelector("#period").value;
-  let count = window.localStorage.getItem("count");
-  if (count == null) count = 0;
   let sparkline = getVal("sparkline");
   let box = {
-    id: `pair${count}`,
+    id: makeid(),
     from: from,
     to: to,
     year: year,
   };
-  count++;
   sparkline.push(box);
   //console.log(sparkline);
   window.localStorage.setItem("sparkline", JSON.stringify(sparkline));
-  window.localStorage.setItem("count", count);
   document.getElementById("addform").style.display = "none";
   displayBox(box.id, from, to, year);
 }
@@ -191,6 +198,6 @@ function displayBox(id, from, to, year) {
 </div>`;
   let container = document.getElementById("container");
   container.insertAdjacentHTML("afterbegin", boxHTML);
-  document.getElementById(id).querySelector('#period').value = year;
+  document.getElementById(id).querySelector("#period").value = year;
   getData(from, to, year, id);
 }
