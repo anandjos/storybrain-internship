@@ -82,6 +82,7 @@ function change(node) {
 
 function getData(from, to, year, id) {
   //console.log("first fn");
+  document.getElementById(id).querySelector('progress').style.display = 'inline';
   let prices = [];
   fetch(`data/${from}/${year}.json`)
     .then((response) => response.json())
@@ -94,7 +95,7 @@ function getData(from, to, year, id) {
 }
 
 function getValues(datafrom, datato, id) {
-  //console.log('hihhii',datafrom,datato,id);
+  const parent = document.getElementById(id);
   let data = [];
   datafrom.forEach((Rate, i) => {
     let price = datafrom[i] / datato[i];
@@ -103,7 +104,6 @@ function getValues(datafrom, datato, id) {
     else price = price.toFixed(2);
     data.push(parseFloat(price));
   });
-  const parent = document.getElementById(id);
   let first = data[0],
     last = data[data.length - 1];
   let min = data[0],
@@ -129,16 +129,14 @@ function getValues(datafrom, datato, id) {
     ).innerHTML = `<img class="changeid" src="img/up.svg" alt="up" width="20" height="30">${change}%`;
     parent.querySelector("#change").style.color = "green";
   }
-
   //Sparkline
-  //fillColor: '' lineColor: ''
-
   $(`#${id} .dynamicsparkline`).sparkline(data, {
     height: 150,
     width: 250,
     lineWidth: 1,
     chartRangeMin: 0,
   });
+  parent.querySelector('progress').style.display = 'none';
 }
 
 function remove(node) {
@@ -184,6 +182,7 @@ function displayBox(id, from, to, year) {
   <img class="delete" src="img/delete.svg" alt="delete" onclick="remove(this)"></br>
   <img class="invert" src="img/swap.svg" alt="invert" onclick="invert(this)">
   </br>
+  <progress></progress>
   <div class="change" id="change">0%</div>
   <div class="lh" id="lh">
       <div class="low"><img class="lhicon" src="img/low.svg" alt=""><span id="low">0</span></div>
