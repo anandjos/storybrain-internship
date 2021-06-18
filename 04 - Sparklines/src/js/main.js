@@ -1,3 +1,27 @@
+const API_ID = 'bfb8dbb462e3f641bc2b132ece64684b';
+let rates = {};
+function pollapi() {
+  getRates();
+  setInterval(getRates, 1000 * 20 * 60);
+}
+
+function getRates() {
+  const url = `http://api.coinlayer.com/api/live?access_key=${API_ID}`;
+  let request = new XMLHttpRequest();
+  request.open("GET", url);
+  request.send();
+  request.onload = () => {
+    if (request.status === 200) {
+      // by default the response comes in the string format, we need to parse the data into JSON
+      let data = JSON.parse(request.response);
+      rates = data.rates;
+      loadData();
+    } else {
+      console.log(`error ${request.status} ${request.statusText}`);
+    }
+  };
+}
+
 function loadData() {
   //window.localStorage.clear();
   let sparkline = getVal("sparkline");
@@ -116,9 +140,12 @@ function progress(id) {
 
 function getData(from, to, year, id) {
   //console.log("first fn");
-  document.getElementById(id).querySelector('progress').value = "0";
-  document.getElementById(id).querySelector('progress').style.display = 'inline';
+  const parent = document.getElementById(id);
+  parent.querySelector('progress').value = "0";
+  parent.querySelector('progress').style.display = 'inline';
   progress(id);
+  parent.querySelector('#from').innerHTML = `$${round(from)}`;
+  parent.querySelector('#to').innerHTML = `$${round(to)}`;
   let prices = [];
   fetch(`data/${from}/${year}.json`)
     .then((response) => response.json())
@@ -212,12 +239,24 @@ function add(node) {
   displayBox(box.id, from, to, year);
 }
 
+function round(cur){
+  let rate = rates[cur];
+  if (Math.abs(rate) < 1)
+    rate = rate.toFixed(1 - Math.floor(Math.log(rate) / Math.log(10)));
+  else rate = rate.toFixed(2);
+  return rate;
+}
+
 function displayBox(id, from, to, year) {
   let boxHTML = `<div class="box" id="${id}">
   <span name="pair" id="pair">${from}/${to}</span>
   <img class="delete" src="img/delete.svg" alt="delete" onclick="remove(this)"></br>
   <img class="invert" src="img/swap.svg" alt="invert" onclick="invert(this)">
   </br>
+  <div class="lh" id="rates">
+      <span class="low" id="from">$${round(from)}</span>
+      <span class="high" id="to">$${round(to)}</span>
+  </div>
   <progress value="0" max="100"></progress></br>
   <div class="change" id="change">0%</div>
   <div class="lh" id="lh">
