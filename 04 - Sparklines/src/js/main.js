@@ -1,4 +1,4 @@
-const API_ID = 'bfb8dbb462e3f641bc2b132ece64684b';
+const API_ID = '8ab6ad61f8d14834c243dbd0cd99303669c7c512e25b812089a0de0c5b24d388';
 let rates = {};
 function pollapi() {
   getRates();
@@ -6,7 +6,7 @@ function pollapi() {
 }
 
 function getRates() {
-  const url = `http://api.coinlayer.com/api/live?access_key=${API_ID}`;
+  const url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,DOGE,LINK,ADA,BNB,BCH,ETC,LINK&tsyms=USD&api_key=${API_ID}`;
   let request = new XMLHttpRequest();
   request.open("GET", url);
   request.send();
@@ -14,7 +14,8 @@ function getRates() {
     if (request.status === 200) {
       // by default the response comes in the string format, we need to parse the data into JSON
       let data = JSON.parse(request.response);
-      rates = data.rates;
+      console.log(data);
+      rates = data;
       loadData();
     } else {
       console.log(`error ${request.status} ${request.statusText}`);
@@ -28,8 +29,8 @@ function loadData() {
   if (sparkline.length == 0) {
     const box = {
       id: "pair00",
-      from: "BTC",
-      to: "ETH",
+      from: 'BTC',
+      to: 'ETH',
       year: "2021",
     };
     sparkline.unshift(box);
@@ -224,6 +225,11 @@ function displayAdd() {
 function add(node) {
   let from = node.querySelector("#c1").value;
   let to = node.querySelector("#c2").value;
+  if(from==to)
+  {
+    warning('Select valid pair');
+    return;
+  }
   let year = node.querySelector("#period").value;
   let sparkline = getVal("sparkline");
   let box = {
@@ -240,7 +246,7 @@ function add(node) {
 }
 
 function round(cur){
-  let rate = rates[cur];
+  let rate = rates[cur]['USD'];
   if (Math.abs(rate) < 1)
     rate = rate.toFixed(1 - Math.floor(Math.log(rate) / Math.log(10)));
   else rate = rate.toFixed(2);
