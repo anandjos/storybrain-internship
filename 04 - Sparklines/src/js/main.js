@@ -80,9 +80,45 @@ function change(node) {
   getData(from, to, year, id);
 }
 
+// async function progress(){
+//   let current_progress = 0,step = 0.5;
+//     interval = setInterval(function() {
+//         current_progress += step;
+//         progress = Math.round(Math.atan(current_progress) / (Math.PI / 2) * 100 * 1000) / 1000
+//         $(`#${id} progress`)
+//             .attr("value", progress);
+//         if (progress >= 100){
+//             clearInterval(interval);
+//         }else if(progress >= 70) {
+//             step = 0.1
+//         }
+//     }, 100);
+// }
+
+function progress(id) {
+  let i = 0;
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById(id);
+    var width = 1;
+    var id = setInterval(frame, 8);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.querySelector('progress').value = width;
+      }
+    }
+  }
+}
+
 function getData(from, to, year, id) {
   //console.log("first fn");
+  document.getElementById(id).querySelector('progress').value = "0";
   document.getElementById(id).querySelector('progress').style.display = 'inline';
+  progress(id);
   let prices = [];
   fetch(`data/${from}/${year}.json`)
     .then((response) => response.json())
@@ -182,7 +218,7 @@ function displayBox(id, from, to, year) {
   <img class="delete" src="img/delete.svg" alt="delete" onclick="remove(this)"></br>
   <img class="invert" src="img/swap.svg" alt="invert" onclick="invert(this)">
   </br>
-  <progress></progress>
+  <progress value="0" max="100"></progress></br>
   <div class="change" id="change">0%</div>
   <div class="lh" id="lh">
       <div class="low"><img class="lhicon" src="img/low.svg" alt=""><span id="low">0</span></div>
