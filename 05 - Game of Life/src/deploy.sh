@@ -1,0 +1,1 @@
+surge . gameoflife-v1.surge.sh

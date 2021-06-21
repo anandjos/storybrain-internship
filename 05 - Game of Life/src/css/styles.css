@@ -1,0 +1,15 @@
+.grid{
+    display: grid;
+    place-items: center;
+}
+.buttons{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.start,.pause,.clear{
+    flex: 1;
+    margin: auto 20px 20px 20px;
+    height: 60px;
+}
