@@ -15,13 +15,18 @@ function setup(){
   noLoop();
 }
 function draw(){
-  background(0);
+  background(255);
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
       if(grid[i][j]==1){
+        fill(0);
+        stroke(128);
+      rect(i*80,j*80,80-1,80-1);
+      }
+      else{
         fill(255);
-      stroke(0);
-      rect(i*80,j*80,80,80);
+        stroke(128);
+      rect(i*80,j*80,80-1,80-1);
       }
     }
   }
@@ -84,8 +89,13 @@ function pause(){
 }
 function clr(){
   noLoop();
-  clear();
-  document.querySelector('.pause').innerHTML = 'Pause';
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      grid[i][j] = 0;
+    }
+  }
+  document.querySelector('.pause').innerHTML = 'Play';
+  draw();
 }
 function mousePressed(e){
   if(document.querySelector('.pause').innerHTML == 'Pause')
@@ -94,12 +104,12 @@ function mousePressed(e){
   let j = Math.floor(e.clientY/80);
   if(grid[i][j]==1){
     grid[i][j]=0;
-    fill(0);
-    rect(i*80,j*80,80,80);
+    fill(255);
+    rect(i*80,j*80,80-1,80-1);
   }
   else{
-    fill(255);
-    rect(i*80,j*80,80,80);
+    fill(0);
+    rect(i*80,j*80,80-1,80-1);
     grid[i][j]=1;
   } 
 }
