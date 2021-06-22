@@ -1,11 +1,11 @@
 let grid;
-let resolution = 20;
+let resolution = 80;
 let rows,cols;
 function setup(){
-  let myCanvas = createCanvas(600,600);
+  let myCanvas = createCanvas(windowWidth,windowHeight-80);
   myCanvas.parent('grid');
-  rows = width/resolution;
-  cols = height/resolution;
+  rows = (width-width%80)/resolution;
+  cols = (height-height%80)/resolution;
   grid = makeArray(rows, cols);
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
@@ -20,7 +20,7 @@ function draw(){
       if(grid[i][j]==1){
         fill(255);
       stroke(0);
-      rect(i*20,j*20,20,20);
+      rect(i*80,j*80,80,80);
       }
     }
   }
@@ -67,6 +67,7 @@ function nextState(){
   grid = next; 
 }
 function start(){
+  document.querySelector('.pause').innerHTML = 'Pause';
   setup();
   loop();
 }
@@ -81,6 +82,23 @@ function pause(){
   }
 }
 function clr(){
+  noLoop();
   clear();
   document.querySelector('.pause').innerHTML = 'Pause';
+}
+function mouseMoved(e){
+  if(document.querySelector('.pause').innerHTML == 'Pause')
+  return;
+  let i = Math.floor(e.clientX/80);
+  let j = Math.floor(e.clientY/80);
+  if(grid[i][j]==1){
+    grid[i][j]=0;
+    fill(0);
+    rect(i*80,j*80,80,80);
+  }
+  else{
+    fill(255);
+    rect(i*80,j*80,80,80);
+    grid[i][j]=1;
+  } 
 }
