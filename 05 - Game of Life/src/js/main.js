@@ -2,16 +2,17 @@ let grid;
 let resolution = 80;
 let rows,cols;
 function setup(){
-  let myCanvas = createCanvas(windowWidth,windowHeight-80);
+  let myCanvas = createCanvas(windowWidth-windowWidth%80,windowHeight-windowHeight%80-80);
   myCanvas.parent('grid');
-  rows = (width-width%80)/resolution;
-  cols = (height-height%80)/resolution;
+  rows = (width)/resolution;
+  cols = (height)/resolution;
   grid = makeArray(rows, cols);
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[0].length; j++) {
       grid[i][j] = Math.floor(Math.random()*2);
     }
   }
+  noLoop();
 }
 function draw(){
   background(0);
@@ -86,7 +87,7 @@ function clr(){
   clear();
   document.querySelector('.pause').innerHTML = 'Pause';
 }
-function mouseMoved(e){
+function mousePressed(e){
   if(document.querySelector('.pause').innerHTML == 'Pause')
   return;
   let i = Math.floor(e.clientX/80);
