@@ -1,6 +1,8 @@
+body{
+    overflow: hidden;
+}
 .grid{
-    display: grid;
-    place-items: center;
+    position: relative;
 }
 .buttons{
     display: flex;
