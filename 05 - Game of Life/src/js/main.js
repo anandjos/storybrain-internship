@@ -1,9 +1,13 @@
 let grid;
-let resolution = 80;
+let resolution = 160;
 let rows,cols;
 function setup(){
-  let myCanvas = createCanvas(windowWidth-windowWidth%80,windowHeight-windowHeight%80-80);
+  let canvasHeight = window.innerHeight - 100;
+  canvasHeight = canvasHeight - canvasHeight%160;
+  let canvasWidth = window.innerWidth - window.innerWidth%160;
+  let myCanvas = createCanvas(canvasWidth,canvasHeight);
   myCanvas.parent('grid');
+  console.log(windowWidth);
   rows = (width)/resolution;
   cols = (height)/resolution;
   grid = makeArray(rows, cols);
@@ -21,12 +25,12 @@ function draw(){
       if(grid[i][j]==1){
         fill(0);
         stroke(128);
-      rect(i*80,j*80,80-1,80-1);
+        rect(i*160,j*160,160-1,160-1);
       }
       else{
         fill(255);
         stroke(128);
-      rect(i*80,j*80,80-1,80-1);
+        rect(i*160,j*160,160-1,160-1);
       }
     }
   }
@@ -73,9 +77,13 @@ function nextState(){
   grid = next; 
 }
 function start(){
-  document.querySelector('.pause').innerHTML = 'Pause';
-  setup();
-  loop();
+  document.querySelector('.pause').innerHTML = 'Play';
+  clr();
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      grid[i][j] = 0;
+    }
+  }
 }
 function pause(){
   if(document.querySelector('.pause').innerHTML == 'Pause'){
@@ -100,16 +108,18 @@ function clr(){
 function mousePressed(e){
   if(document.querySelector('.pause').innerHTML == 'Pause')
   return;
-  let i = Math.floor(e.clientX/80);
-  let j = Math.floor(e.clientY/80);
+  let i = Math.floor(e.clientX/160);
+  let j = Math.floor(e.clientY/160);
   if(grid[i][j]==1){
     grid[i][j]=0;
     fill(255);
-    rect(i*80,j*80,80-1,80-1);
+    rect(i*160,j*160,160-1,160-1);
+    stroke(128);
   }
   else{
     fill(0);
-    rect(i*80,j*80,80-1,80-1);
+    rect(i*160,j*160,160-1,160-1);
+    stroke(128);
     grid[i][j]=1;
   } 
 }
