@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Snake Game</title>
+</head>
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<body>
+    <div class="gamearea">
+        <div class="score" id="score">SCORE: 10</div>
+        <div class="grid" id="grid"></div>
+    </div>
+    <div class="controls" id="controls">
+        <button class="play" onclick="play()">Play</button>
+        <div class="move" id="move">
+            <img src="img/up.svg" alt="up" class="up" onclick="move(this)">
+            <div class="side">
+                <img src="img/up.svg" alt="left" class="left" onclick="move(this)">
+                <img src="img/up.svg" alt="right" class="right" onclick="move(this)">
+            </div>
+            <img src="img/up.svg" alt="down" class="down" onclick="move(this)">
+        </div>
+        <button class="stop" onclick="stop()">Stop</div>
+    </div>
+</body>
+</html>

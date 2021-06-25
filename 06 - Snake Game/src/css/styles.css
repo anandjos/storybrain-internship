@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow: hidden;
+}
+.gamearea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.score{
+    margin-left: 20px;
+    height: 20px;
+}
+.grid{
+    display: inline-block;
+}
+.controls{
+    display: flex;
+    justify-content: space-around;
+    height: 150px;
+    margin: 0 10px 0 10px;
+}
+.move{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    height: 60px;
+    width: 60px;
+}
+button{
+    height: 80px;
+    width: 80px;
+    margin: auto 0 auto 0;
+}
+.left{
+    transform: rotate(270deg);
+}
+.right{
+    transform: rotate(90deg);
+}
+.down{
+    transform: rotate(180deg);
+}
+@media (min-width: 900px){
+    button{
+        width: 150px;
+    }
+    .left{
+        margin-right: 20px;
+    }
+    .right{
+        margin-left: 20px;
+    }
+}
