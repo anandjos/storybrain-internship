@@ -1,1 +1,1 @@
-surge . gameoflife-v4.surge.sh
+surge . gameoflife-v5.surge.sh

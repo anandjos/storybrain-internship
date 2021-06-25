@@ -111,11 +111,11 @@ function clr(){
   document.querySelector('.pause').innerHTML = 'Play';
   draw();
 }
-function touchEnded(){
+function mousePressed(e){
   if(document.querySelector('.pause').innerHTML == 'Pause')
   return;
-  let i = Math.floor(mouseX/160);
-  let j = Math.floor(mouseY/160);
+  let i = Math.floor(e.clientX/160);
+  let j = Math.floor(e.clientY/160);
   if(grid[i][j]==1){
     grid[i][j]=0;
     fill(255);
