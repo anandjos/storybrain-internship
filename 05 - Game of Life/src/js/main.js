@@ -36,6 +36,12 @@ function draw(){
   }
   nextState();
 }
+function warning(msg) {
+  document.getElementById("warning").innerHTML = msg;
+  setTimeout(function () {
+    document.getElementById("warning").innerHTML = "";
+  }, 900);
+}
 function makeArray(rows, cols) {
   let arr = new Array(rows);
   for (let i = 0; i < rows; i++) {
@@ -105,11 +111,11 @@ function clr(){
   document.querySelector('.pause').innerHTML = 'Play';
   draw();
 }
-function mousePressed(e){
+function touchStarted(){
   if(document.querySelector('.pause').innerHTML == 'Pause')
   return;
-  let i = Math.floor(e.clientX/160);
-  let j = Math.floor(e.clientY/160);
+  let i = Math.floor(mouseX/160);
+  let j = Math.floor(mouseY/160);
   if(grid[i][j]==1){
     grid[i][j]=0;
     fill(255);
