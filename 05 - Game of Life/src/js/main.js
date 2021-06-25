@@ -11,8 +11,8 @@ function setup(){
   rows = (width)/resolution;
   cols = (height)/resolution;
   grid = makeArray(rows, cols);
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       grid[i][j] = Math.floor(Math.random()*2);
     }
   }
@@ -20,8 +20,8 @@ function setup(){
 }
 function draw(){
   background(255);
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       if(grid[i][j]==1){
         fill(0);
         stroke(128);
@@ -52,10 +52,10 @@ function makeArray(rows, cols) {
 function calNeighbors(x,y){
   let i,j,neighbors = 0;
   for(i=x-1;i<x+2;i++){
-    if(i<0||i>=grid.length)
+    if(i<0||i>=rows)
     continue;
     for(j=y-1;j<y+2;j++){
-      if(j<0||j>=grid[i].length)
+      if(j<0||j>=cols)
       continue;
       if(grid[i][j]==1)
       neighbors++;
@@ -65,8 +65,8 @@ function calNeighbors(x,y){
 }
 function nextState(){
   let next = makeArray(rows,cols);
-  for (let x = 0; x < grid.length; x++) {
-    for (let y = 0; y < grid[0].length; y++) {
+  for (let x = 0; x < rows; x++) {
+    for (let y = 0; y < cols; y++) {
       let neighbors = calNeighbors(x,y);
       if(grid[x][y]==1){
         if(neighbors<2||neighbors>3)
@@ -85,8 +85,8 @@ function nextState(){
 function start(){
   document.querySelector('.pause').innerHTML = 'Play';
   clr();
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       grid[i][j] = 0;
     }
   }
@@ -103,15 +103,15 @@ function pause(){
 }
 function clr(){
   noLoop();
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       grid[i][j] = 0;
     }
   }
   document.querySelector('.pause').innerHTML = 'Play';
   draw();
 }
-function touchStarted(){
+function touchEnded(){
   if(document.querySelector('.pause').innerHTML == 'Pause')
   return;
   let i = Math.floor(mouseX/160);
