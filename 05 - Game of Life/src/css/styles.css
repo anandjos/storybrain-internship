@@ -1,8 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     overflow: hidden;
 }
+.gamearea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .grid{
-    position: relative;
+    display: inline-block;
 }
 .buttons{
     display: flex;
