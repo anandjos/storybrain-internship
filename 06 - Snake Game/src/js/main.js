@@ -7,14 +7,17 @@ let foodCor = [res*10,res*20];
 let appleCount = 0;
 let direction;
 function setup() {
-  let canvasHeight = window.innerHeight - 200;
+  let canvasHeight = window.innerHeight - 220;
   canvasHeight = canvasHeight - (canvasHeight % 20);
   let canvasWidth = window.innerWidth - (window.innerWidth % 20);
+  if(canvasWidth>900)
+  canvasWidth = 900;
   let myCanvas = createCanvas(canvasWidth, canvasHeight);
   myCanvas.parent("grid");
   xCor = [res * 5, res * 6,res*7,res*8,res*9,res*10];
   yCor = [res * 5, res * 5,res*5,res*5,res*5,res*5];
   direction='right';
+  console.log(height,width);
 }
 function draw() {
   background(0);
