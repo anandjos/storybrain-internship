@@ -9,7 +9,7 @@
 | ``02 Jun 21`` |     ``03``    | Currency Converter           | [v1][3-v1], [v2][3-v2], [v3][3-v3], [v4][3-v4], [v5][3-v5], [v6][3-v6]                         |
 | ``09 Jun 21`` |     ``04``    | Sparklines                   | [v1][4-v1], [v2][4-v2], [v3][4-v3], [v4][4-v4], [v5][4-v5], [v6][4-v6], [v7][4-v7], [v8][4-v8] |
 | ``21 Jun 21`` |     ``05``    | Game of Life                 | [v1][5-v1], [v2][5-v2], [v3][5-v3], [v4][5-v4], [v5][5-v5]                                     |
-| ``25 Jun 21`` |     ``06``    | Snake Game                   | [v1][6-v1]                                                                                     |
+| ``25 Jun 21`` |     ``06``    | Snake Game                   | [v1][6-v1], [v2][6-v2], [v3][6-v3]                                                             |
 
 [1-v1]: https://fc-converter.surge.sh/
 [1-v2]: https://fc-converter-v2.surge.sh/
@@ -42,3 +42,5 @@
 [5-v4]: https://gameoflife-v4.surge.sh/
 [5-v5]: https://gameoflife-v5.surge.sh/
 [6-v1]: https://snakegame-v1.surge.sh/
+[6-v2]: https://snakegame-v3.surge.sh/
+[6-v3]: https://snakegame-v3.surge.sh/
