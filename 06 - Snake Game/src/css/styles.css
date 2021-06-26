@@ -11,10 +11,11 @@ body{
     align-items: center;
 }
 .score{
+    font-weight: bold;
     margin-left: 20px;
     height: 20px;
 }
-.grid{
+.canvas{
     display: inline-block;
 }
 .controls{
