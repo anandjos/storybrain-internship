@@ -1,6 +1,5 @@
-let grid;
 let lp = true;
-let res = 10;
+const res = 10;
 let xCor;
 let yCor;
 let foodCor = [res*10,res*20];
@@ -13,11 +12,10 @@ function setup() {
   if(canvasWidth>900)
   canvasWidth = 900;
   let myCanvas = createCanvas(canvasWidth, canvasHeight);
-  myCanvas.parent("grid");
+  myCanvas.parent("canvas");
   xCor = [res * 5, res * 6,res*7,res*8,res*9,res*10];
   yCor = [res * 5, res * 5,res*5,res*5,res*5,res*5];
   direction='right';
-  console.log(height,width);
 }
 function draw() {
   background(0);
@@ -85,7 +83,7 @@ function checkSnakeCollission(){
 }
 function checkFood(){
   if(foodCor[0]==xCor[xCor.length-1]&&foodCor[1]==yCor[yCor.length-1]){
-    appleCount++;
+    appleCount+=10;
     appleRandom();
     return 0;
   }
