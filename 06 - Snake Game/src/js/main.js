@@ -1,25 +1,109 @@
 let grid;
-let resolution = 80;
-let rows, cols;
+let lp = true;
+let res = 10;
+let xCor;
+let yCor;
+let foodCor = [res*10,res*20];
+let appleCount = 0;
+let direction;
 function setup() {
   let canvasHeight = window.innerHeight - 200;
-  canvasHeight = canvasHeight - (canvasHeight % 80);
-  let canvasWidth = window.innerWidth - (window.innerWidth % 80);
+  canvasHeight = canvasHeight - (canvasHeight % 20);
+  let canvasWidth = window.innerWidth - (window.innerWidth % 20);
   let myCanvas = createCanvas(canvasWidth, canvasHeight);
   myCanvas.parent("grid");
-  rows = width / resolution;
-  cols = height / resolution;
-  grid = makeArray(rows, cols);
+  xCor = [res * 5, res * 6,res*7,res*8];
+  yCor = [res * 5, res * 5,res*5,res*5];
+  direction='right';
 }
-function draw(){
-    background(0);
-}
-function play(){
-}
-function makeArray(rows, cols) {
-  let arr = new Array(rows);
-  for (let i = 0; i < rows; i++) {
-    arr[i] = new Array(cols);
+function draw() {
+  background(0);
+  frameRate(10);
+  //moveSnake();
+  for (i = 0; i < xCor.length - 1; i++) {
+    line(xCor[i], yCor[i], xCor[i + 1], yCor[i + 1]);
+    stroke(255);
+    strokeWeight(10);
   }
-  return arr;
+  point(foodCor[0],foodCor[1]);
+  moveSnake();
+  checkFood();
+  //noLoop();
+}
+function moveSnake() {
+  let x=0,y=0;
+  if(direction=='right'){
+    x=1;
+  }
+  else if(direction=='down'){
+    y=1;
+  }
+  else if(direction=='left'){
+    x=-1;
+  }
+  else if(direction=='up'){
+    y=-1;
+  }
+  x = xCor[xCor.length-1] + res * x;
+  y = yCor[yCor.length-1] + res * y;
+  if(x<0||y<0||x>width-res||y>height-res)
+  {
+    noLoop();
+    lp = false;
+    document.getElementById('score').innerHTML=`GAME OVER! SCORE :${appleCount}`;
+  }
+  else{
+    xCor.push(x);
+  yCor.push(y);
+  let c = checkFood();
+  if(c){
+    xCor.splice(0,1);
+  yCor.splice(0,1);
+  document.getElementById('score').innerHTML=`SCORE :${appleCount}`;
+  }
+  }
+}
+function checkFood(){
+  if(foodCor[0]==xCor[xCor.length-1]&&foodCor[1]==yCor[yCor.length-1]){
+    appleCount++;
+    appleRandom();
+    return 0;
+  }
+  return 1;
+}
+function appleRandom() {
+  let x = 10*Math.floor(Math.random() * (width/10 - 2) + 1);
+  let y = 10*Math.floor(Math.random() * (height/10 - 2) + 1);
+  foodCor = [x,y];
+  point(x, y);
+}
+function play() {
+  setup();
+  appleCount=0;
+  document.getElementById('score').innerHTML=`SCORE :${appleCount}`;
+  lp = true;
+  loop();
+}
+function stop() {
+  if(lp){
+    noLoop();
+    lp = false;
+  }
+  else {
+    loop();
+    lp = true;
+  }
+}
+function move(node) {
+  const dir = node.className;
+  if (dir == "up") {
+    if (direction != "down") direction = dir;
+  } else if (dir == "right") {
+    if (direction != "left") direction = dir;
+  } else if (dir == "down") {
+    if (direction != "up") direction = dir;
+  }
+  else if (dir == "left") {
+    if (direction != "right") direction = dir;
+  }
 }

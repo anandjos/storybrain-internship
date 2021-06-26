@@ -1,1 +1,1 @@
-surge . snakegame-v1.surge.sh 
+surge . snakegame-v3.surge.sh 
