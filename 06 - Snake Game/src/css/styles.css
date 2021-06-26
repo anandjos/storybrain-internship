@@ -38,6 +38,7 @@ button{
     height: 80px;
     width: 80px;
     margin: auto 0 auto 0;
+    font-weight: bold;
 }
 .play{
     background: #F6C6EA;
