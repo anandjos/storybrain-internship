@@ -10,6 +10,13 @@ body{
     flex-direction: column;
     align-items: center;
 }
+.scorecard{
+    display: flex;
+}
+a{
+    position: absolute;
+    right: 0;
+}
 .score{
     font-weight: bold;
     margin-left: 20px;
