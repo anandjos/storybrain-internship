@@ -105,14 +105,24 @@ function getVal(item) {
   return JSON.parse(val);
 }
 function addScore() {
-  const time = new Date();
+  const date = new Date();
   let scores = getVal("scores");
+  let time = date.getHours();
+  if(date.getMinutes()<10)
+  time = time + ":" + '0' + date.getMinutes();
+  else time = time + ':' + date.getMinutes();
+  let today = date.getDate();
+  let month =  date.getMonth();
+  let year = date.getFullYear();
   let score = {
     time: time,
     score: appleCount,
+    today: today,
+    month: month,
+    year: year
   };
   scores.unshift(score);
-  window.localStorage.setItem("scores", scores);
+  window.localStorage.setItem("scores", JSON.stringify(scores));
 }
 function play() {
   setup();

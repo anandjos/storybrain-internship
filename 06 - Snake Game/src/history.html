@@ -5,8 +5,18 @@
     <title>Scorecard</title>
 </head>
 <link rel="stylesheet" href="css/scorecard.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 <script type="text/javascript" src="js/scorecard.js"></script>
 <body onload="getScores()">
-    <div class="score" id="score"></div>
+    <div class="container" id="container">
+        <span class="homebtn"><a href="index.html"><img id="icon" src="img/home.svg" alt="home"></a></span>
+        <a class="clearbtn" onclick="clr()"><img id="icon" src="img/delete.svg" alt="clear"></a>
+    </div>
+    <div class="listcontainer">
+    <ul class="list" id="list">
+
+    </ul>
+    </div>
+    <span id="warning"></span>
 </body>
 </html>
